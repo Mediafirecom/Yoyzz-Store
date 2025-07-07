@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Yoyzz Offc - Produk Kami</title>
+    <title>Yoyzz Official - Web Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -45,7 +45,7 @@
   top: 0;
   left: -999px;
   height: 100%;
-  width: 60%;
+  width: 200px;
   background: #111;
   padding: 40px 20px;
   transition: left 0.3s ease;
@@ -73,31 +73,29 @@
     }
 
         
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            animation: fadeIn 1s ease-out, float 4s ease-in-out infinite;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-weight: 700;
-            animation: fadeIn 1s ease-out;
-        }
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    animation: fadeIn 1s ease-out, float 4s ease-in-out infinite;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 700;
+    animation: fadeIn 1s ease-out;
+}
         
 
   .btn-in-menu {
@@ -133,6 +131,66 @@
             width: 90%;
             gap: 100px;
   }
+  
+.information {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  z-index: 9999;
+  cursor: pointer;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.info {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: #ffffff;
+  color: #2c3e50;
+  border-radius: 14px;
+  padding: 20px 22px;
+  width: 280px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  display: none;
+  z-index: 9998;
+  height: 80%;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeInUp 0.4s ease-out;
+  border-left: 6px solid #e74c3c;
+}
+
+.info h2 {
+  color: #e74c3c;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.info p {
+  font-size: 19px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  margin-top: 20px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .tiktok {
   color: white;
@@ -539,24 +597,24 @@
     </style>
 </head>
 <body>
-  <!-- Tombol menu -->
+<!-- Tombol menu -->
 <div class="menu-btn" onclick="toggleSidebar()" style="position: fixed; top: 15px; left: 15px; z-index: 2000; cursor: pointer;">
   <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" width="30" alt="Menu">
 </div>
 <div class="sidebar" id="sidebar">
- <img src="https://files.catbox.moe/72inft.png" alt="Yoyzz Logo" class="logo">
+ <img src="img/yoyzz.jpg" alt="Yoyzz Logo" class="logo">
   <h1 style="margin-top: 0;">Yoyzz Store</h1>
 <button class="btn-in-menu" onclick="window.location.href='https://whatsapp.com/channel/0029VbBfPecFcow5Z80O2n2I'">
   <i class="fab fa-whatsapp"></i>
   SALURAN
 </button>
-<button class="tiktok" onclick="window.location.href='https://tiktok.com/jvzyoga'" style="top: 20px;">
+<button class="tiktok" onclick="window.location.href='https://tiktok.com/@javazcript.id'" style="top: 20px;">
   <i class="fab fa-tiktok"></i>
   TIKTOK
 </button>
 <button class="btn-in-menu" onclick="window.location.href='https://wa.me/6285857636560'" style="top: 40px;">
   <i class="fab fa-whatsapp"></i>
-  WHATSAPP OWNER
+  WHATSAPP
 </button>
 <button class="btn-in-menu-telegram" onclick="window.location.href='https://t.me/jvzyoga'" style="top: 60px;">
   <i class="fab fa-telegram"></i>
@@ -565,13 +623,13 @@
 </div>
 <div id="main-content" onclick="closeSidebar()">
     <div class="header">
-        <img src="https://files.catbox.moe/72inft.png" alt="Yoyzz Logo" class="logo">
-        <h1>Yoyzz Offc</h1>
+        <img src="img/yoyzz.jpg" alt="Yoyzz Logo" class="logo">
+        <h1>Yoyzz Official</h1>
     </div>
     <p class="tagline">
         <span class="typing-container" id="typing-text"></span>
         <span class="typing-cursor"></span>
-        <button class="skip-btn" id="skip-btn">Lewati</button>
+        <button class="skip-btn" id="skip-btn" style="z-index:10000;">Lewati</button>
     </p>
     
     <!-- Search Bar -->
@@ -581,80 +639,6 @@
     </div>
     
     <div id="products-container">
-        <div class="product" data-name="surxrat v1.4 s35">
-            <span class="badge">Popular</span>
-            <img src="https://files.catbox.moe/vx3mpm.jpg" alt="Surxrat" class="product-image">
-            <h2 class="product-title">SURXRAT V1.4 S35</h2>
-            <p class="price">Rp 25.000</p>
-            <p>Kontrol Perangkat Android dari jarak jauh dengan fitur lengkap dan keamanan terjamin.</p>
-            
-            <div class="payment-methods">
-                <p>Pembayaran:</p>
-                <ul>
-                    <li>DANA: 087714144188</li>
-                    <li>GOPAY: 087714144188</li>
-                    <li>WHATSAPP: 085857636560</li>
-                </ul>
-            </div>
-            
-            <button class="pay-button" onclick="showConfirmationModal('SURXRAT V1.4 S35', 25000, 'https://wa.me/6285857636560?text=Saya%20ingin%20membeli%20SURXRAT%20V1.4%20S35%20seharga%20Rp%2025.000')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon"> Bayar Sekarang
-            </button>
-        </div>
-        
-        <div class="product" data-name="ransomware">
-            <img src="https://files.catbox.moe/rl6tnu.png" alt="Ransomware" class="product-image">
-            <h2 class="product-title">RANSOMWARE</h2><br>
-            <p class="price">Rp 10.000</p>
-            <p>Ransomware LockScreen adalah aplikasi ransomware jenis screen locker jenis malware yang mengunci tampilan layar pengguna sehingga mereka tidak dapat mengakses aplikasi.</p>
-            
-            <div class="payment-methods">
-                <p>Pembayaran:</p>
-                <ul>
-                    <li>DANA: 085828632336</li>
-                    <li>GOPAY: 089653927785</li>
-                    <li>WHATSAPP: 085857636560</li>
-                </ul>
-            </div>
-            
-            <button class="pay-button" onclick="showConfirmationModal('RANSOMWARE', 10000, 'https://wa.me/6285857636560?text=Saya%20ingin%20membeli%20RANSOMWARE%20seharga%20Rp%2010.000')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon"> Bayar Sekarang
-            </button>
-        </div>
-        
-        <div class="product" data-name="encrypt">
-            <img src="https://files.catbox.moe/c6bjny.jpg" alt="Javascript Obfuscator" class="product-image">
-            <h2 class="product-title">Javascript Obfucator</h2>
-            <p class="price">Rp 0</p>
-            <p>JavaScript Obfuscator adalah alat untuk mengubah kode <strong>Javascript</strong> menjadi bentuk yang sulit dibaca dan dimengerti, tanpa mengubah fungsinya. Ini berguna untuk melindungi kode dari pencurian, pembajakan, dan modifikasi tidak sah.</p>
-            
-            <div class="payment-methods">
-                <p>Pembayaran:</p>
-                <ul>
-                    <li>DANA: 085828632336</li>
-                    <li>GOPAY: 089653927785</li>
-                    <li>WHATSAPP: 085857636560</li>
-                </ul>
-            </div>
-            <button class="pay-button" onclick="showConfirmationModal('Javascript Obfuscator', 0, 'https://javascript-obfuscator-delta.vercel.app/')">VISIT SITE</button>
-        </div>
-        <div class="product" data-name="rename">
-            <img src="https://files.catbox.moe/17m8av.jpg" alt="Rename Script" class="product-image">
-            <h2 class="product-title">Website Renamer</h2><br>
-            <p class="price">Rp 0</p>
-            <p><strong>Website Renamer</strong> adalah alat online untuk mengganti nama dan identitas dalam skrip bot WhatsApp. Cocok untuk rebranding atau personalisasi tanpa mengubah fungsi utama bot.</p>
-            
-            <div class="payment-methods">
-                <p>Pembayaran:</p>
-                <ul>
-                    <li>DANA: 085828632336</li>
-                    <li>GOPAY: 089653927785</li>
-                    <li>WHATSAPP: 085857636560</li>
-                </ul>
-            </div>
-            <button class="pay-button" onclick="showConfirmationModal('Website Rename Script', 0, 'https://renamerscript.glitch.me')">VISIT SITE</button>
-        </div>
-    </div>
     </div>
     
     <div class="no-results" id="no-results">
@@ -662,11 +646,10 @@
         <p>Produk tidak ditemukan</p>
     </div>
     
-    <!-- Payment Confirmation Modal -->
     <div class="modal-overlay" id="confirmation-modal">
         <div class="confirmation-modal">
             <button class="close-modal" onclick="closeModal()">&times;</button>
-            <img src="https://files.catbox.moe/72inft.png" alt="Yoyzz Logo" class="modal-logo">
+            <img src="img/yoyzz.jpg" alt="Yoyzz Logo" class="modal-logo">
             <h3 class="modal-title">Yoyzz Offc</h3>
             <p class="modal-message">Konfirmasi Pembelian</p>
             <p class="modal-product-name" id="modal-product-name"></p>
@@ -677,151 +660,326 @@
             </div>
         </div>
     </div>
-  </div>
-    
-    <script>
-        // Typing animation
-        const taglineText = "Temukan produk digital terbaik disini.";
-        const typingElement = document.getElementById('typing-text');
-        const skipBtn = document.getElementById('skip-btn');
-        let typingSpeed = 50; // milliseconds per character
-        
-  const sidebar = document.getElementById('sidebar');
-  const mainContent = document.getElementById('main-content');
-  
-function closeSidebar() {
-  document.getElementById("sidebar").classList.remove("sidebar-open");
-  document.getElementById("main-content").classList.remove("blurred");
-  document.getElementById("overlay").style.display = "none";
+</div>
+<div class="information" onclick="openInformation()">
+  <i class="fas fa-info"></i>
+</div>
+<div class="info" id="info">
+  <h2>Information</h2>
+  <p>
+    Produk seperti <strong>Ransomware</strong>,<strong> Phishing Website</strong>,<strong> RAT (Remote Access Trojan)</strong> atau produk berbahaya lainnya yang tersedia di toko ini bukan untuk disalah gunakan.
+  </p>
+  <p>
+    Seluruh materi ditujukan hanya untuk <strong>pembelajaran, penelitian, dan simulasi keamanan siber</strong>. 
+    Dilarang menggunakan produk ini untuk merugikan pihak lain atau melanggar hukum.
+  </p>
+  <p style="font-style: italic; font-size: 13px; color: #888;">
+    Pengguna bertanggung jawab penuh atas penggunaan produk ini.<br>
+    &copy Yoyzz Official
+  </p>
+</div>
 
-  if (window.history.state === "sidebar-open") {
-    history.back();
+<script>
+    let isOpen = false;
+    const productsData = [
+        {
+            id: "surxrat-v1.4-s35",
+            image: "img/produk/surxrat_publik.jpg",
+            name: "SURXRAT V1.4 S35",
+            price: 25000,
+            description: "Kontrol Perangkat Android dari jarak jauh dengan fitur lengkap dan keamanan terjamin.",
+            paymentMethods: {
+                dana: "087714144188",
+                gopay: "087714144188",
+                whatsapp: "085857636560"
+            },
+            whatsappLink: "https://wa.me/6285857636560?text=Saya%20ingin%20membeli%20SURXRAT%20V1.4%20S35%20seharga%20Rp%2025.000",
+            isPopular: true
+        },
+        {
+            id: "ransomware",
+            image: "img/produk/ransomware.jpg",
+            name: "RANSOMWARE",
+            price: 10000,
+            description: "Ransomware LockScreen adalah aplikasi ransomware jenis screen locker jenis malware yang mengunci tampilan layar pengguna sehingga mereka tidak dapat mengakses aplikasi.",
+            paymentMethods: {
+                dana: "085828632336",
+                gopay: "089653927785",
+                whatsapp: "085857636560"
+            },
+            whatsappLink: "https://wa.me/6285857636560?text=Saya%20ingin%20membeli%20RANSOMWARE%20seharga%20Rp%2010.000",
+            isPopular: true
+        },
+        {
+          id: "pembuatan-website",
+          image: "img/produk/jasa_pembuatan_website.jpg",
+          name: "Jasa Pembuatan Website",
+          price: 20000,
+          description: "<strong>Jasa Pembuatan Website</strong> adalah layanan profesional untuk membuat situs web sesuai kebutuhan Anda. Mulai dari tampilan, fitur, hingga keamanan, semua dirancang secara custom agar terlihat menarik, responsif, dan mudah digunakan.",
+          paymentMethods: {
+                dana: "085828632336",
+                gopay: "089653927785",
+                whatsapp: "085857636560"
+            },
+          whatsappLink: "https://wa.me/6285857636560?text=Saya%20Ingin%20Menyewa%20Jasa%20Pembuatan%20Website%20Dengan%20Harga%220.000",
+          isPopular: true,
+          isFree: false
+        },
+        {
+          id: "phising-website",
+          image: "img/produk/phising_website.jpg",
+          name: "Phising Website",
+          price: 5000,
+          description: "<strong>Phising Website</strong> adalah metode pencurian data dengan menyamar sebagai situs asli. Saat korban mengklik URL palsu, data seperti lokasi, perangkat, dan info pribadi bisa dikumpulkan tanpa disadari.",
+          paymentMethods: {
+                dana: "085828632336",
+                gopay: "089653927785",
+                whatsapp: "085857636560"
+            },
+          whatsappLink: "https://wa.me/6285857636560?text=Saya%20Ingin%20Membeli%20Phising%20Website%20dengan%20Harga%205.000",
+          isPopular: false,
+          isFree: false
+        },
+        {
+          id: "nokos",
+          image: "img/produk/nokos.jpg",
+          name: "Nomor Kosong (Nokos)",
+          price: 5000,
+          description: "<strong>Nokos</strong> adalah Nomor yang sudah kosong dan tidak lagi dimiliki oleh seseorang biasanya nokos digunakan sebagai nomor ke 2 atau nomor bot whatsapp",
+          paymentMethods: {
+                dana: "085828632336",
+                gopay: "089653927785",
+                whatsapp: "085857636560"
+            },
+          whatsappLink: "https://wa.me/6285857636560?text=Saya%20Ingin%20Membeli%20Nokos%20Indo",
+          isPopular: false,
+          isFree: false
+        },
+        {
+            id: "javascript-obfuscator",
+            image: "img/produk/encrypt_website.jpg",
+            name: "Javascript Obfucator",
+            price: 0,
+            description: "JavaScript Obfuscator adalah alat untuk mengubah kode <strong>Javascript</strong> menjadi bentuk yang sulit dibaca dan dimengerti, tanpa mengubah fungsinya. Ini berguna untuk melindungi kode dari pencurian, pembajakan, dan modifikasi tidak sah.",
+            paymentMethods: {
+                dana: "085828632336",
+                gopay: "089653927785",
+                whatsapp: "085857636560"
+            },
+            whatsappLink: "https://javascript-obfuscator-delta.vercel.app/",
+            isPopular: false,
+            isFree: true
+        },
+        {
+            id: "rename-tool",
+            image: "img/produk/web_rename.jpg",
+            name: "Rename Tool",
+            price: 0,
+            description: "<strong>Rename Tool</strong> adalah alat online untuk mengganti nama dan identitas dalam skrip bot WhatsApp. Cocok untuk rebranding atau personalisasi tanpa mengubah fungsi utama bot.",
+            paymentMethods: {
+                dana: "085828632336",
+                gopay: "089653927785",
+                whatsapp: "085857636560"
+            },
+            whatsappLink: "https://renamerscript.glitch.me",
+            isPopular: false,
+            isFree: true
+        }
+    ];
+    
+    function createProductElement(product) {
+        const productElement = document.createElement('div');
+        productElement.className = 'product';
+        productElement.dataset.name = product.id;
+        
+        let badge = '';
+        if (product.isPopular) {
+            badge = '<span class="badge">Popular</span>';
+        }
+        
+        const buttonText = product.price === 0 ? 'VISIT SITE' : 'Bayar Sekarang';
+        const buttonClass = product.price === 0 ? 'pay-button' : 'pay-button';
+        const buttonIcon = product.price === 0 ? '' : '<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">';
+        
+        productElement.innerHTML = `
+            ${badge}
+            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <h2 class="product-title">${product.name}</h2><br>
+            <p class="price">${product.price === 0 ? 'Rp 0' : `Rp ${product.price.toLocaleString('id-ID')}`}</p>
+            <p>${product.description}</p>
+            
+            <div class="payment-methods">
+                <p>Pembayaran:</p>
+                <ul>
+                    <li>DANA: ${product.paymentMethods.dana}</li>
+                    <li>GOPAY: ${product.paymentMethods.gopay}</li>
+                    <li>WHATSAPP: ${product.paymentMethods.whatsapp}</li>
+                </ul>
+            </div>
+            
+            <button class="${buttonClass}" onclick="showConfirmationModal('${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.whatsappLink}')">
+                ${buttonIcon} ${buttonText}
+            </button>
+        `;
+        
+        return productElement;
+    }
+
+    function renderProducts() {
+        const productsContainer = document.getElementById('products-container');
+        
+        productsContainer.innerHTML = '';
+        
+        productsData.forEach(product => {
+            const productElement = createProductElement(product);
+            productsContainer.appendChild(productElement);
+        });
+    }
+
+    const taglineText = "Temukan produk digital terbaik disini.";
+    const typingElement = document.getElementById('typing-text');
+    const skipBtn = document.getElementById('skip-btn');
+    let typingSpeed = 50;
+    
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('main-content');
+    
+    function closeSidebar() {
+        document.getElementById("sidebar").classList.remove("sidebar-open");
+        document.getElementById("main-content").classList.remove("blurred");
+        document.getElementById("overlay").style.display = "none";
+
+        if (window.history.state === "sidebar-open") {
+            history.back();
+        }
+    }
+    
+
+
+function openInformation() {
+  const info = document.getElementById("info");
+  
+  if (isOpen) {
+    info.style.display = "none";
+  } else {
+    info.style.display = "block";
   }
+
+  isOpen = !isOpen;
 }
 
 
-  function toggleSidebar() {
-    const isOpen = sidebar.classList.contains('sidebar-open');
+    function toggleSidebar() {
+        const isOpen = sidebar.classList.contains('sidebar-open');
 
-    if (!isOpen) {
-      // Buka sidebar
-      sidebar.classList.add('sidebar-open');
-      mainContent.classList.add('blurred');
+        if (!isOpen) {
+            sidebar.classList.add('sidebar-open');
+            mainContent.classList.add('blurred');
 
-      // Tambahkan history state agar tombol back bisa menutup sidebar
-      history.pushState({ sidebarOpen: true }, '');
-    } else {
-      // Tutup sidebar
-      sidebar.classList.remove('sidebar-open');
-      mainContent.classList.remove('blurred');
+            history.pushState({ sidebarOpen: true }, '');
+        } else {
+            sidebar.classList.remove('sidebar-open');
+            mainContent.classList.remove('blurred');
 
-      // Kembalikan ke state sebelumnya (mundur satu history)
-      if (history.state && history.state.sidebarOpen) {
-        history.back();
-      }
-    }
-  }
-
-  // Saat tombol back ditekan
-  window.addEventListener('popstate', function (event) {
-    // Jika sidebar sedang terbuka, maka tutup
-    if (sidebar.classList.contains('sidebar-open')) {
-      sidebar.classList.remove('sidebar-open');
-      mainContent.classList.remove('blurred');
-    }
-  });
-        
-        function typeWriter(text, i, fnCallback) {
-            if (i < text.length) {
-                typingElement.innerHTML = text.substring(0, i+1);
-                setTimeout(function() { typeWriter(text, i + 1, fnCallback) }, typingSpeed);
-            } else if (typeof fnCallback == 'function') {
-                setTimeout(fnCallback, 1000);
+            if (history.state && history.state.sidebarOpen) {
+                history.back();
             }
         }
-        
-        function startTyping() {
-            typeWriter(taglineText, 0, function() {
-                skipBtn.style.display = 'none';
-            });
+    }
+
+    window.addEventListener('popstate', function (event) {
+        if (sidebar.classList.contains('sidebar-open')) {
+            sidebar.classList.remove('sidebar-open');
+            mainContent.classList.remove('blurred');
         }
-        
-        skipBtn.addEventListener('click', function() {
-            typingSpeed = 0;
-            typingElement.innerHTML = taglineText;
+    });
+    
+    function typeWriter(text, i, fnCallback) {
+        if (i < text.length) {
+            typingElement.innerHTML = text.substring(0, i+1);
+            setTimeout(function() { typeWriter(text, i + 1, fnCallback) }, typingSpeed);
+        } else if (typeof fnCallback == 'function') {
+            setTimeout(fnCallback, 1000);
+        }
+    }
+    
+    function startTyping() {
+        typeWriter(taglineText, 0, function() {
             skipBtn.style.display = 'none';
         });
-        
-        // Start the typing animation
-        window.addEventListener('load', startTyping);
-        
-        // Search functionality
-        const searchInput = document.getElementById('search-input');
+    }
+    
+    skipBtn.addEventListener('click', function() {
+        typingSpeed = 0;
+        typingElement.innerHTML = taglineText;
+        skipBtn.style.display = 'none';
+    });
+    
+    const searchInput = document.getElementById('search-input');
+    const noResults = document.getElementById('no-results');
+    
+    function handleSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        let hasResults = false;
         const products = document.querySelectorAll('.product');
-        const noResults = document.getElementById('no-results');
-        const productsContainer = document.getElementById('products-container');
         
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase().trim();
-            let hasResults = false;
+        products.forEach(product => {
+            const productName = product.getAttribute('data-name').toLowerCase();
+            const productTitle = product.querySelector('.product-title').textContent.toLowerCase();
+            const productDesc = product.querySelector('p:not(.price)')?.textContent.toLowerCase() || '';
             
-            products.forEach(product => {
-                const productName = product.getAttribute('data-name').toLowerCase();
-                const productTitle = product.querySelector('.product-title').textContent.toLowerCase();
-                const productDesc = product.querySelector('p:not(.price)')?.textContent.toLowerCase() || '';
-                
-                if (productName.includes(searchTerm) || 
-                    productTitle.includes(searchTerm) || 
-                    productDesc.includes(searchTerm)) {
-                    product.style.display = 'block';
-                    hasResults = true;
-                } else {
-                    product.style.display = 'none';
-                }
-            });
-            
-            noResults.style.display = hasResults ? 'none' : 'block';
-            
-            // Move no-results message to appear below search
-            if (!hasResults) {
-                productsContainer.appendChild(noResults);
+            if (productName.includes(searchTerm) || 
+                productTitle.includes(searchTerm) || 
+                productDesc.includes(searchTerm)) {
+                product.style.display = 'block';
+                hasResults = true;
+            } else {
+                product.style.display = 'none';
             }
         });
+        
+        noResults.style.display = hasResults ? 'none' : 'block';
+    }
+    
+    searchInput.addEventListener('input', handleSearch);
 
-        // Reset search when clicking the search icon
-        document.querySelector('.search-icon').addEventListener('click', function() {
-            searchInput.value = '';
-            searchInput.dispatchEvent(new Event('input'));
-        });
+    document.querySelector('.search-icon').addEventListener('click', function() {
+        searchInput.value = '';
+        handleSearch();
+    });
+    
+    let currentPaymentUrl = '';
+    
+    function showConfirmationModal(productName, price, paymentUrl) {
+        currentPaymentUrl = paymentUrl;
+        const modal = document.getElementById('confirmation-modal');
+        document.getElementById('modal-product-name').textContent = productName;
+        document.getElementById('modal-price').textContent = `Rp ${price.toLocaleString('id-ID')}`;
+        modal.style.display = 'flex';
         
-        // Modal functions
-        let currentPaymentUrl = '';
-        
-        function showConfirmationModal(productName, price, paymentUrl) {
-            currentPaymentUrl = paymentUrl;
-            const modal = document.getElementById('confirmation-modal');
-            document.getElementById('modal-product-name').textContent = productName;
-            document.getElementById('modal-price').textContent = `Rp ${price.toLocaleString('id-ID')}`;
-            modal.style.display = 'flex';
-            
-            // Set up confirm button
-            const confirmBtn = document.getElementById('confirm-payment-btn');
-            confirmBtn.onclick = function() {
-                window.location.href = currentPaymentUrl;
-            };
+        const confirmBtn = document.getElementById('confirm-payment-btn');
+        confirmBtn.onclick = function() {
+            window.location.href = currentPaymentUrl;
+        };
+    }
+    
+    function closeModal() {
+        document.getElementById('confirmation-modal').style.display = 'none';
+        const info = document.getElementById("info");
+        info.style.display = "none";
+    }
+    
+    window.addEventListener('click', function(event) {
+        const modal = document.getElementById('confirmation-modal');
+        if (event.target === modal) {
+            closeModal();
         }
-        
-        function closeModal() {
-            document.getElementById('confirmation-modal').style.display = 'none';
-        }
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            const modal = document.getElementById('confirmation-modal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
-    </script>
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        renderProducts();
+        startTyping();
+    });
+</script>
 </body>
-</html>
+    </html>

@@ -25,14 +25,20 @@
             100% { transform: translateY(0px); }
         }
         
-        body {
-            font-family: 'Poppins', Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-            color: #333;
-        }
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  color: #333;
+  max-width: 100%;
+  padding: 10px 15px;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 20px 60px;
+  }
+}
         
         #main-content.blurred {
   filter: blur(5px);
@@ -179,6 +185,40 @@ h1 {
   margin-bottom: 20px;
   line-height: 1.6;
   margin-top: 20px;
+}
+
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  z-index: 9999;
+  cursor: pointer;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.chat {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: #ffffff;
+  color: #2c3e50;
+  border-radius: 14px;
+  padding: 20px 22px;
+  width: 280px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  display: none;
+  z-index: 9998;
+  height: 80%;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeInUp 0.4s ease-out;
+  border-left: 6px solid #e74c3c;
 }
 
 @keyframes fadeInUp {
@@ -446,6 +486,34 @@ h1 {
             }
         }
         
+         .modal-benefit {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .benefit-modal {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.4s ease-out forwards;
+            position: relative;
+            text-align: center;
+        }
+        
         .close-modal {
             position: absolute;
             top: 10px;
@@ -587,13 +655,105 @@ h1 {
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
-        .no-results {
-            text-align: center;
-            padding: 30px;
-            color: #7f8c8d;
-            font-style: italic;
-            display: none;
-        }
+.no-results {
+  text-align: center;
+  padding: 30px;
+  color: #7f8c8d;
+  font-style: italic;
+  display: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#lottie-container {
+  width: 150px;
+  height: 150px;
+  margin: 10px auto;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+/* Untuk layar sedang ke atas (tablet, laptop, PC) */
+@media (min-width: 768px) {
+  #lottie-container {
+    width: 250px;
+    height: 250px;
+  }
+
+  .no-results p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Layar sangat besar (PC wide screen) */
+@media (min-width: 1200px) {
+  #lottie-container {
+    width: 320px;
+    height: 320px;
+  }
+}
+        
+#products-container {
+  display: grid;
+  grid-template-columns: 1fr; /* default mobile */
+  gap: 20px;
+}
+
+@media (min-width: 1024px) {
+  #products-container {
+    grid-template-columns: repeat(3, 1fr); /* 4 kolom di PC */
+  }
+
+  .sidebar-open ~ #main-content {
+    margin-left: 250px;
+  }
+}
+
+/* Biar semua produk sejajar tingginya */
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Bungkus konten utama produk, supaya tombol tetap di bawah */
+.product-content {
+  flex-grow: 1;
+}
+
+  .product {
+    margin-bottom: 0;
+  }
+
+  .search-input {
+    width: 90%;
+  }
+
+.sidebar {
+  width: 200px;
+}
+
+#chatbot-box {
+  width: 280px;
+}
+}
+
+@media (min-width: 1024px) {
+  .product-image {
+    height: 200px;
+  }
+
+  .product-title {
+    font-size: 1.6em;
+  }
+
+  .price {
+    font-size: 1.4em;
+  }
+}
     </style>
 </head>
 <body>
@@ -642,11 +802,10 @@ h1 {
     </div>
     
     <div class="no-results" id="no-results">
-        <i class="fas fa-search" style="font-size: 2em; margin-bottom: 10px;"></i>
-        <p>Produk tidak ditemukan</p>
-    </div>
+<div id="lottie-container" style="width: 300px; height: 300px; transform: translateY(-90px);"></div>
+<p style="margin-top: -140px;">Oops! Produk yang kamu cari tidak tersedia.</p>
     
-    <div class="modal-overlay" id="confirmation-modal">
+    <div class="modal-benefit" id="confirmation-modal">
         <div class="confirmation-modal">
             <button class="close-modal" onclick="closeModal()">&times;</button>
             <img src="img/yoyzz.jpg" alt="Yoyzz Logo" class="modal-logo">
@@ -658,6 +817,18 @@ h1 {
                 <button class="cancel-btn" onclick="closeModal()">Batal</button>
                 <button id="confirm-payment-btn">Konfirmasi</button>
             </div>
+        </div>
+    </div>
+</div>
+<div class="modal-overlay" id="benefit-modal">
+    <div class="confirmation-modal">
+        <button class="close-modal" onclick="closeBenefit()">&times;</button>
+        <img src="img/yoyzz.jpg" alt="Yoyzz Logo" class="modal-logo">
+        <h3 class="modal-title">Yoyzz Offc</h3>
+        <p class="modal-message">Benefit</p>
+        <p class="modal-product-name" id="benefit-product" style="text-align: left;"></p>
+        <div class="modal-buttons">
+            <button class="cancel-btn" onclick="closeBenefit()">Close</button>
         </div>
     </div>
 </div>
@@ -678,7 +849,16 @@ h1 {
     &copy Yoyzz Official
   </p>
 </div>
-
+<script src="https://unpkg.com/lottie-web@5.7.4/build/player/lottie.min.js"></script>
+<script>
+  lottie.loadAnimation({
+    container: document.getElementById('lottie-container'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'animation/notfound.json' // Ganti dengan path file JSON kamu
+  });
+</script>
 <script>
     let isOpen = false;
     const productsData = [
@@ -694,21 +874,8 @@ h1 {
                 whatsapp: "085857636560"
             },
             whatsappLink: "https://wa.me/6285857636560?text=Saya%20ingin%20membeli%20SURXRAT%20V1.4%20S35%20seharga%20Rp%2025.000",
-            isPopular: true
-        },
-        {
-            id: "ransomware",
-            image: "img/produk/ransomware.jpg",
-            name: "RANSOMWARE",
-            price: 10000,
-            description: "Ransomware LockScreen adalah aplikasi ransomware jenis screen locker jenis malware yang mengunci tampilan layar pengguna sehingga mereka tidak dapat mengakses aplikasi.",
-            paymentMethods: {
-                dana: "085828632336",
-                gopay: "089653927785",
-                whatsapp: "085857636560"
-            },
-            whatsappLink: "https://wa.me/6285857636560?text=Saya%20ingin%20membeli%20RANSOMWARE%20seharga%20Rp%2010.000",
-            isPopular: true
+            isPopular: true,
+            benefits: "✅ Support All Android.<br>✅ Harga terjangkau mulai dari Rp25.000 saja.<br>✅ Mendukung fitur kontrol perangkat seperti file manager dan command.<br>✅Cocok untuk edukasi atau kontrol perangkat anak atau teman.<br>✅ Disertai panduan lengkap tentang cara penggunaan."
         },
         {
           id: "pembuatan-website",
@@ -723,8 +890,56 @@ h1 {
             },
           whatsappLink: "https://wa.me/6285857636560?text=Saya%20Ingin%20Menyewa%20Jasa%20Pembuatan%20Website%20Dengan%20Harga%220.000",
           isPopular: true,
-          isFree: false
+          isFree: false,
+          benefits: "✅ Desain profesional dan responsif di semua perangkat<br>✅ Proses cepat dan dukungan penuh dari tim Yoyzz<br>✅ Website Responsif & Informatif<br>✅ Mobile friendly dan mudah dikelola<br>✅ Bisa custom sesuai kebutuhan bisnis atau personal"
         },
+        {
+            id: "ransomware",
+            image: "img/produk/ransomware.jpg",
+            name: "RANSOMWARE",
+            price: 10000,
+            description: "Ransomware LockScreen adalah aplikasi ransomware jenis screen locker jenis malware yang mengunci tampilan layar pengguna sehingga mereka tidak dapat mengakses aplikasi.",
+            paymentMethods: {
+                dana: "085828632336",
+                gopay: "089653927785",
+                whatsapp: "085857636560"
+            },
+            whatsappLink: "https://wa.me/6285857636560?text=Saya%20ingin%20membeli%20RANSOMWARE%20seharga%20Rp%2010.000",
+            isPopular: true,
+            benefits: "✅ Kunci Ponsel Korban<br>✅ Cocok untuk pentester, tim keamanan, dan edukasi profesional<br>✅ Disertai panduan Lengkap tentang cara penggunaan ransomware<br>✅ Bisa request kata kunci<br>✅ Kunci perangkat korban"
+        },
+        {
+          id: "web-spy",
+          image: "img/produk/web_spy.jpg",
+          name: "Web Spy Pro",
+          price: 5000,
+          description: "<strong>Web Spy Pro</strong> adalah alat untuk mengambil elemen-elemen penting dari situs web, seperti HTML, CSS, JavaScript, dan file gambar yang di-import langsung dari halaman.",
+          paymentMethods: {
+                dana: "085828632336",
+                gopay: "089653927785",
+                whatsapp: "085857636560"
+            },
+          whatsappLink: "https://wa.me/6285857636560?text=Saya%20Ingin%20Membeli%20Web%20Spy%20Pro%20Dengan%20Harga%205.000",
+          isPopular: true,
+          isFree: false,
+          benefits: "✅ Ekstrak struktur HTML lengkap dari halaman web<br>✅ Unduh file CSS dan JavaScript eksternal dengan mudah<br>✅ Ambil gambar dan file media yang diimport dari HTML<br>✅ Cocok untuk developer, pelajar, dan peneliti keamanan<br>✅ Interface simpel, tinggal tempel dan download/simpan"
+        },
+{
+  id: "web-spy",
+  image: "img/produk/reseller_web_spy.jpg",
+  name: "Reseller Web Spy Pro",
+  price: 10000,
+  description: "<strong>Reseller Web Spy Pro</strong> adalah program kemitraan resmi dari Yoyzz yang memungkinkan Anda untuk membuat akun Web Spy dan menjualnya kembali ke pengguna lain. Cocok untuk Anda yang ingin memulai bisnis digital dengan produk yang sudah terbukti dibutuhkan.",
+  paymentMethods: {
+    dana: "085828632336",
+    gopay: "089653927785",
+    whatsapp: "085857636560"
+  },
+  whatsappLink: "https://wa.me/6285857636560?text=Saya%20Ingin%20Membeli%20Reseller%20Web%20Spy%20Pro%20Dengan%20Harga%2010.000",
+  isPopular: false,
+  isFree: false,
+  benefits: "✅ Bisa membuat dan membagikan akun Web Spy<br>✅ Bebas atur harga jual dan keuntungan<br>✅ Tanpa stok atau pengiriman fisik<br>✅ Sistem simpel dan mudah dijalankan<br>✅ Dukungan langsung dari tim Yoyzz"
+},
         {
           id: "phising-website",
           image: "img/produk/phising_website.jpg",
@@ -738,7 +953,8 @@ h1 {
             },
           whatsappLink: "https://wa.me/6285857636560?text=Saya%20Ingin%20Membeli%20Phising%20Website%20dengan%20Harga%205.000",
           isPopular: false,
-          isFree: false
+          isFree: false,
+          benefits: "✅ Mengumpulkan informasi perangkat korban hanya dengan klik URL<br>✅ Dapat mendeteksi lokasi, kamera, jenis perangkat, user agent, dan baterai<br>✅ Menangkap detail seperti kode pos, IP publik, dan sistem operasi<br>✅ Cocok untuk edukasi keamanan siber dan uji coba simulasi phising<br>✅ Didukung tampilan web yang menarik dan responsif"
         },
         {
           id: "nokos",
@@ -753,7 +969,8 @@ h1 {
             },
           whatsappLink: "https://wa.me/6285857636560?text=Saya%20Ingin%20Membeli%20Nokos%20Indo",
           isPopular: false,
-          isFree: false
+          isFree: false,
+          benefits: "✅ Dapat digunakan untuk verifikasi akun sementara<br>✅ Cocok dijadikan nomor bot whatsapp<br>✅ Praktis tanpa perlu beli kartu fisik<br>✅ Privasi terjaga, cocok untuk kebutuhan sementara<br>✅ Proses cepat dan langsung siap pakai"
         },
         {
             id: "javascript-obfuscator",
@@ -768,7 +985,8 @@ h1 {
             },
             whatsappLink: "https://javascript-obfuscator-delta.vercel.app/",
             isPopular: false,
-            isFree: true
+            isFree: true,
+            benefits: "✅ Mengacak kode JavaScript agar sulit dibaca dan dimodifikasi<br>✅ Melindungi logika bisnis dari pencurian atau pembajakan<br>✅ Mendukung berbagai teknik obfuscation (string encode, control flow, dll)<br>✅ Cocok untuk developer yang ingin melindungi source code<br>✅ Mudah digunakan dan hasil tetap bisa dijalankan normal"
         },
         {
             id: "rename-tool",
@@ -783,31 +1001,32 @@ h1 {
             },
             whatsappLink: "https://renamerscript.glitch.me",
             isPopular: false,
-            isFree: true
+            isFree: true,
+            benefits: "✅ Ganti nama owner, nama bot, footer, dan teks lainnya dengan cepat & <strong>gratis</strong><br>✅ Mendukung file script.js, config.js, dan sejenisnya<br>✅ Tidak perlu edit manual, cukup input data baru<br>✅ Praktis untuk personalisasi atau rebranding bot WhatsApp<br>✅ Cocok untuk pemula maupun pengembang lanjutan"
         }
     ];
     
-    function createProductElement(product) {
-        const productElement = document.createElement('div');
-        productElement.className = 'product';
-        productElement.dataset.name = product.id;
-        
-        let badge = '';
-        if (product.isPopular) {
-            badge = '<span class="badge">Popular</span>';
-        }
-        
-        const buttonText = product.price === 0 ? 'VISIT SITE' : 'Bayar Sekarang';
-        const buttonClass = product.price === 0 ? 'pay-button' : 'pay-button';
-        const buttonIcon = product.price === 0 ? '' : '<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">';
-        
-        productElement.innerHTML = `
-            ${badge}
+function createProductElement(product) {
+    const productElement = document.createElement('div');
+    productElement.className = 'product';
+    productElement.dataset.name = product.id;
+
+    let badge = '';
+    if (product.isPopular) {
+        badge = '<span class="badge">Popular</span>';
+    }
+
+    const buttonText = product.price === 0 ? 'VISIT SITE' : 'Bayar Sekarang';
+    const buttonIcon = product.price === 0 ? '' : '<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">';
+
+    productElement.innerHTML = `
+        ${badge}
+        <div class="product-content">
             <img src="${product.image}" alt="${product.name}" class="product-image">
             <h2 class="product-title">${product.name}</h2><br>
             <p class="price">${product.price === 0 ? 'Rp 0' : `Rp ${product.price.toLocaleString('id-ID')}`}</p>
             <p>${product.description}</p>
-            
+
             <div class="payment-methods">
                 <p>Pembayaran:</p>
                 <ul>
@@ -816,14 +1035,17 @@ h1 {
                     <li>WHATSAPP: ${product.paymentMethods.whatsapp}</li>
                 </ul>
             </div>
-            
-            <button class="${buttonClass}" onclick="showConfirmationModal('${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.whatsappLink}')">
+        </div>
+        <div class="product-footer">
+            <button class="pay-button" onclick="showConfirmationModal('${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.whatsappLink}')">
                 ${buttonIcon} ${buttonText}
             </button>
-        `;
-        
-        return productElement;
-    }
+            <button class="pay-button" onclick="openBenefit('${product.name.replace(/'/g, "\\'")}', '${product.benefits.replace(/'/g, "\\'")}')">Benefit</button>
+        </div>
+    `;
+
+    return productElement;
+}
 
     function renderProducts() {
         const productsContainer = document.getElementById('products-container');
@@ -836,6 +1058,20 @@ h1 {
         });
     }
 
+    // Benefit Modal Functions
+    function openBenefit(productName, benefits) {
+    document.getElementById('benefit-product').innerHTML = `
+        <div style="text-align: center;"><strong>${productName}</strong></div><br>
+        <div style="text-align: left;">${benefits}</div>
+    `;
+    document.getElementById('benefit-modal').style.display = 'flex';
+}
+
+    function closeBenefit() {
+        document.getElementById('benefit-modal').style.display = 'none';
+    }
+
+    // Existing functions remain the same
     const taglineText = "Temukan produk digital terbaik disini.";
     const typingElement = document.getElementById('typing-text');
     const skipBtn = document.getElementById('skip-btn');
@@ -853,21 +1089,18 @@ h1 {
             history.back();
         }
     }
-    
 
+    function openInformation() {
+      const info = document.getElementById("info");
+      
+      if (isOpen) {
+        info.style.display = "none";
+      } else {
+        info.style.display = "block";
+      }
 
-function openInformation() {
-  const info = document.getElementById("info");
-  
-  if (isOpen) {
-    info.style.display = "none";
-  } else {
-    info.style.display = "block";
-  }
-
-  isOpen = !isOpen;
-}
-
+      isOpen = !isOpen;
+    }
 
     function toggleSidebar() {
         const isOpen = sidebar.classList.contains('sidebar-open');
@@ -974,6 +1207,11 @@ function openInformation() {
         if (event.target === modal) {
             closeModal();
         }
+        
+        const benefitModal = document.getElementById('benefit-modal');
+        if (event.target === benefitModal) {
+            closeBenefit();
+        }
     });
     
     document.addEventListener('DOMContentLoaded', function() {
@@ -982,4 +1220,4 @@ function openInformation() {
     });
 </script>
 </body>
-    </html>
+</html>

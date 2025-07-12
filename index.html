@@ -1,13 +1,1069 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Yoyzz Official - Web Store</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoyzz Official Website Store</title>
+    
+    <!-- CSS Eksternal -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+:root {
+    --primary-color: #6c63ff;
+    --secondary-color: #4a00e0;
+    --accent-color: #ff7846;
+    --dark-color: #2a2a2a;
+    --light-color: #ffffff;
+    --gray-color: #f5f5f5;
+    --text-color: #333333;
+    --text-light: #777777;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+    --gradient-primary: linear-gradient(135deg, #6c63ff 0%, #4a00e0 100%);
+    --gradient-accent: linear-gradient(135deg, #ff7846 0%, #ff2b65 100%);
+    --transition: all 0.3s ease;
+    --border-radius: 8px;
+    --border-radius-lg: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-color);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Image Protection */
+.protected-image {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 100px 0;
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 36px;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-header p {
+    font-size: 18px;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    outline: none;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: var(--light-color);
+    box-shadow: 0 5px 15px rgba(106, 99, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--secondary-color);
+    color: var(--light-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(106, 99, 255, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: var(--light-color);
+    transform: translateY(-3px);
+}
+
+.btn-cta {
+    background: var(--gradient-accent);
+    color: var(--light-color);
+    padding: 15px 40px;
+    font-size: 18px;
+    box-shadow: 0 5px 15px rgba(255, 120, 70, 0.3);
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 120, 70, 0.4);
+    color: var(--light-color);
+}
+
+.cta-button-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* ===== HEADER & NAVIGATION ===== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: transparent;
+    transition: var(--transition);
+    padding: 20px 0;
+}
+
+header.scrolled {
+    background-color: var(--light-color);
+    box-shadow: 0 5px 20px var(--shadow-color);
+    padding: 15px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.name h1 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--light-color);
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+header.scrolled .name h1 {
+    color: var(--primary-color);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: var(--light-color);
+    cursor: pointer;
+}
+
+header.scrolled .menu-toggle {
+    color: var(--dark-color);
+}
+
+.nav-menu {
+    display: flex;
+}
+
+.nav-menu li {
+    margin-left: 30px;
+}
+
+.nav-menu li a {
+    color: var(--light-color);
+    font-weight: 500;
+    position: relative;
+}
+
+header.scrolled .nav-menu li a {
+    color: var(--dark-color);
+}
+
+.nav-menu li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    bottom: -5px;
+    left: 0;
+    transition: var(--transition);
+}
+
+.nav-menu li a:hover::after,
+.nav-menu li a.active::after {
+    width: 100%;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+    color: var(--accent-color);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    height: 100vh;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTI4MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIj48cGF0aCBkPSJNMTI4MCAwTDY0MCA3MCAwIDB2MTQwbDY0MC03MCAxMjgwIDcwVjB6Ii8+PC9nPjwvc3ZnPg==');
+    background-size: 100% 100px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    z-index: 1;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.hero-text {
+    flex: 1;
+    color: var(--light-color);
+    padding-right: 50px;
+}
+
+.hero-text h1 {
+    font-size: 60px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero-text h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.hero-text p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    opacity: 0.8;
+    max-width: 600px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Phone Carousel Styling */
+.phone-carousel {
+    position: relative;
+    width: 300px;
+    height: 600px;
+    perspective: 1000px;
+}
+
+.phone-mockup {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-color);
+    border-radius: 40px;
+    padding: 10px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    transform: rotate(-5deg);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.phone-mockup.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+.phone-mockup::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 30px;
+    background-color: var(--dark-color);
+    border-radius: 0 0 20px 20px;
+    z-index: 2;
+}
+
+.phone-screen {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+}
+
+.phone-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Phone Animation Classes */
+.phone-mockup#phone1 {
+    animation: fadeInPhone 1.5s ease forwards;
+}
+
+.phone-mockup#phone2 {
+    animation: fadeInPhone 1.5s ease 3s forwards;
+}
+
+.phone-mockup#phone3 {
+    animation: fadeInPhone 1.5s ease 6s forwards;
+}
+
+@keyframes fadeInPhone {
+    0% {
+        opacity: 0;
+        transform: rotate(-5deg) translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+        transform: rotate(-5deg) translateY(0);
+    }
+}
+
+@keyframes fadeOutPhone {
+    0% {
+        opacity: 1;
+        visibility: visible;
+        transform: rotate(-5deg) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        transform: rotate(-5deg) translateY(-30px);
+    }
+}
+
+/* ===== FEATURES SECTION ===== */
+.features {
+    background-color: var(--gray-color);
+    position: relative;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: var(--light-color);
+    border-radius: var(--border-radius-lg);
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+}
+
+.feature-icon i {
+    font-size: 32px;
+    color: var(--light-color);
+}
+
+.feature-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+/* ===== APP FEATURES SECTION ===== */
+.app-features {
+    background-color: var(--light-color);
+    padding: 100px 0;
+}
+
+.features-table {
+    overflow-x: auto;
+    margin-bottom: 30px;
+}
+
+.features-table table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.features-table th,
+.features-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.features-table th {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.features-table tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.features-table tr:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.features-table td i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+}
+
+.status-ok {
+    color: var(--success-color);
+    font-weight: bold;
+    text-align: center;
+}
+
+.status-error {
+    color: var(--error-color);
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ===== ANDROID SUPPORT SECTION ===== */
+.android-support {
+    background-color: var(--gray-color);
+    padding: 100px 0;
+}
+
+.android-table {
+    max-width: 600px;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+.android-table table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.android-table th,
+.android-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.android-table th {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.android-table tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.android-table tr:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.android-table td i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    font-size: 18px;
+}
+
+/* ===== SHOWCASE SECTION ===== */
+.showcase {
+    background-color: var(--light-color);
+}
+
+.showcase-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.video-container {
+    flex: 1;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: 0 15px 40px var(--shadow-color);
+}
+
+.video-placeholder {
+    background-color: var(--dark-color);
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-color);
+}
+
+.video-placeholder i {
+    font-size: 80px;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.video-placeholder i:hover {
+    transform: scale(1.1);
+}
+
+.showcase-text {
+    flex: 1;
+}
+
+.showcase-text h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.showcase-features {
+    margin-top: 30px;
+}
+
+.showcase-features li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.showcase-features li i {
+    color: var(--accent-color);
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* ===== TESTIMONIALS SECTION ===== */
+.testimonials {
+    background-color: var(--gray-color);
+}
+
+.testimonial-slider {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.testimonial-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonial-card {
+    flex: 0 0 calc(33.333% - 20px);
+    min-width: 300px;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius-lg);
+    padding: 30px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    scroll-snap-align: start;
+}
+
+.testimonial-content {
+    margin-bottom: 20px;
+}
+
+.testimonial-content p {
+    font-style: italic;
+    position: relative;
+    padding: 0 20px;
+}
+
+.testimonial-content p::before,
+.testimonial-content p::after {
+    content: '"';
+    font-size: 50px;
+    color: var(--primary-color);
+    opacity: 0.2;
+    position: absolute;
+}
+
+.testimonial-content p::before {
+    top: -20px;
+    left: -10px;
+}
+
+.testimonial-content p::after {
+    bottom: -40px;
+    right: -10px;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    border: 3px solid var(--primary-color);
+}
+
+.author-info h4 {
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.author-info p {
+    color: var(--text-light);
+    margin: 0;
+    font-size: 14px;
+}
+
+/* ===== PRICING SECTION ===== */
+.pricing {
+    background-color: var(--light-color);
+}
+
+.single-pricing-card {
+    background-color: var(--light-color);
+    border-radius: var(--border-radius-lg);
+    padding: 40px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    border: 2px solid var(--primary-color);
+    transition: var(--transition);
+}
+
+.single-pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.pricing-header h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.price {
+    font-size: 20px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.currency {
+    font-size: 24px;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.amount {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--primary-color);
+}
+
+.period {
+    font-size: 18px;
+    color: var(--text-light);
+    margin-left: 5px;
+}
+
+.pricing-features {
+    margin-bottom: 30px;
+}
+
+.pricing-features ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.pricing-features ul li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.pricing-features ul li i {
+    margin-right: 10px;
+    font-size: 16px;
+    color: var(--success-color);
+}
+
+.pricing-footer {
+    text-align: center;
+}
+
+.pricing-footer .btn {
+    padding: 15px 40px;
+    font-size: 18px;
+}
+
+/* ===== CTA SECTION ===== */
+.cta {
+    background: var(--gradient-primary);
+    color: var(--light-color);
+    text-align: center;
+    padding: 80px 0;
+}
+
+.cta h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.cta p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* ===== BACK TO TOP BUTTON ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    color: var(--light-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 5px 15px rgba(106, 99, 255, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 99;
+}
+
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(-5deg);
+    }
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(106, 99, 255, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(106, 99, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(106, 99, 255, 0);
+    }
+}
+
+.video-placeholder i {
+    animation: pulse 2s infinite;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media screen and (max-width: 1024px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-text {
+        padding-right: 0;
+        margin-bottom: 50px;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .showcase-content {
+        flex-direction: column;
+    }
+    
+    .features-table table,
+    .android-table table {
+        min-width: 600px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        background-color: var(--light-color);
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 5px 20px var(--shadow-color);
+        transition: var(--transition);
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-menu li {
+        margin: 0;
+        padding: 15px 0;
+        text-align: center;
+    }
+    
+    .nav-menu li a {
+        color: var(--dark-color);
+    }
+    
+    .hero-text h1 {
+        font-size: 40px;
+    }
+    
+    .hero-text h2 {
+        font-size: 24px;
+    }
+    
+    .section-header h2 {
+        font-size: 30px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pricing-features ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 32px;
+    }
+    
+    .hero-text h2 {
+        font-size: 20px;
+    }
+    
+    .phone-carousel {
+        width: 250px;
+        height: 500px;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    .section-header h2 {
+        font-size: 26px;
+    }
+    
+    .section-header p {
+        font-size: 16px;
+    }
+    
+    .testimonial-card {
+        min-width: 250px;
+    }
+    
+    .single-pricing-card {
+        padding: 30px 20px;
+    }
+    
+    .price .amount {
+        font-size: 36px;
+    }
+}
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -24,23 +1080,34 @@
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
+:root {
+    --primary-color: #6c63ff;
+    --secondary-color: #4a00e0;
+    --accent-color: #ff7846;
+    --dark-color: #2a2a2a;
+    --light-color: #ffffff;
+    --gray-color: #f5f5f5;
+    --text-color: #333333;
+    --text-light: #777777;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+    --gradient-primary: linear-gradient(135deg, #6c63ff 0%, #4a00e0 100%);
+    --gradient-accent: linear-gradient(135deg, #ff7846 0%, #ff2b65 100%);
+    --transition: all 0.3s ease;
+    --border-radius: 8px;
+    --border-radius-lg: 16px;
+}
         
+
 body {
   font-family: 'Poppins', Arial, sans-serif;
   margin: 0 auto;
-  background-color: #f5f5f5;
   color: #333;
   max-width: 100%;
-  padding: 10px 15px;
-}
 
-@media (min-width: 768px) {
-  body {
-    padding: 20px 60px;
-  }
-}
         
-        #main-content.blurred {
+#main-content.blurred {
   filter: blur(5px);
   transition: filter 0.3s ease;
 }
@@ -79,12 +1146,6 @@ body {
     }
 
         
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
 
 .logo {
     width: 100px;
@@ -151,7 +1212,7 @@ h1 {
   font-size: 14px;
   z-index: 9999;
   cursor: pointer;
-  animation: fadeInUp 0.5s ease-out;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .info {
@@ -171,6 +1232,12 @@ h1 {
   animation: fadeInUp 0.4s ease-out;
   border-left: 6px solid #e74c3c;
 }
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
 .info h2 {
   color: #e74c3c;
@@ -186,6 +1253,15 @@ h1 {
   line-height: 1.6;
   margin-top: 20px;
 }
+
+#main-content {
+    background: linear-gradient(to bottom, #5626eb, #ffffff);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    z-index: 1;
+}
+
 
 .chatbot {
   position: fixed;
@@ -299,35 +1375,43 @@ h1 {
         }
         
         /* Search Bar */
-        .search-container {
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .search-input {
-            width: 85%;
-            padding: 12px 20px;
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 14px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 2px 15px rgba(52, 152, 219, 0.2);
-        }
-        
-        .search-icon {
-            position: absolute;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #7f8c8d;
-        }
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px;
+    padding-right: 45px; /* ruang untuk icon */
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 2px 15px rgba(52, 152, 219, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7f8c8d;
+    pointer-events: none;
+    font-size: 16px;
+}
         
         .product {
             background-color: white;
@@ -409,39 +1493,51 @@ h1 {
             transform: scaleX(1);
             transform-origin: left;
         }
-        
-        .payment-methods {
-            margin-top: 15px;
-        }
-        
-        .payment-methods p {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .payment-methods ul {
-            margin-top: 5px;
-            padding-left: 20px;
-        }
-        
-        .payment-methods li {
-            position: relative;
-            margin-bottom: 5px;
-            transition: transform 0.3s ease;
-        }
-        
-        .payment-methods li:hover {
-            transform: translateX(5px);
-        }
-        
-        .payment-methods li::before {
-            content: '•';
-            color: #3498db;
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-        }
+       
+
+.payment-methods {
+    margin-top: auto; /* Ini akan mendorong payment methods ke bawah */
+    padding-top: 15px;
+    border-top: 1px dashed #e0e0e0;
+    margin-bottom: 0;
+}
+
+.payment-methods p {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.payment-methods ul {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.payment-methods li {
+    position: relative;
+    margin-bottom: 6px;
+    transition: transform 0.3s ease;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.payment-methods li:hover {
+    transform: translateX(5px);
+    color: #3498db;
+}
+
+.payment-methods li::before {
+    content: '•';
+    color: #3498db;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    position: absolute;
+    left: 0;
+}
         
         hr {
             border: 0;
@@ -661,7 +1757,6 @@ h1 {
   color: #7f8c8d;
   font-style: italic;
   display: none;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -695,116 +1790,327 @@ h1 {
   }
 }
         
+/* Container produk scroll horizontal (mobile) */
 #products-container {
-  display: grid;
-  grid-template-columns: 1fr; /* default mobile */
-  gap: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 15px 10px;
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
-@media (min-width: 1024px) {
-  #products-container {
-    grid-template-columns: repeat(3, 1fr); /* 4 kolom di PC */
-  }
-
-  .sidebar-open ~ #main-content {
-    margin-left: 250px;
-  }
+#products-container::-webkit-scrollbar {
+  height: 6px;
+}
+#products-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
 }
 
-/* Biar semua produk sejajar tingginya */
+/* Produk Card */
 .product {
+  min-width: 280px;
+  width: 280px;
+  flex: 0 0 auto;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  box-sizing: border-box;
+  position: relative;
+}
+
+
+
+/* Konten Produk */
+.product-content {
+  flex-grow: 1;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
-/* Bungkus konten utama produk, supaya tombol tetap di bawah */
-.product-content {
-  flex-grow: 1;
+/* Tombol Footer */
+.product-footer {
+  margin-top: 0;
+  padding-top: 0;
+  margin-block-start: 0;
 }
 
-  .product {
-    margin-bottom: 0;
-  }
+/* Teks dan Responsif */
+.product h3, .product p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin: 0 0 10px 0;
+}
 
-  .search-input {
-    width: 90%;
-  }
+.product h3 {
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+.product p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #555;
+}
+.price {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+  margin: 10px 0;
+}
 
+/* Badge Terlaris */
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff6b00;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* Section Judul & Wrapper */
+.section-title {
+  font-size: 1.3rem;
+  margin: 15px 10px 5px;
+  color: #333;
+  padding-left: 5px;
+}
+.products-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.scroll-container {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 15px 10px;
+  margin: 0 0 25px 0;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Formulir Laporan */
+.report-section {
+  background: transparent;
+  padding: 60px 20px;
+  text-align: center;
+  color: #2c2c2c;
+}
+.report-section h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.report-section p {
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #555;
+}
+.report-form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.report-form input,
+.report-form textarea {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  resize: none;
+}
+.report-form textarea {
+  min-height: 120px;
+}
+.report-form button {
+  padding: 12px;
+  border: none;
+  background-color: #6C63FF;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.report-form button:hover {
+  background-color: #5a54d1;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #1a1a1a;
+  color: #ccc;
+  padding: 40px 20px;
+  text-align: center;
+}
+.footer-content {
+  max-width: 1000px;
+  margin: auto;
+}
+.footer-logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer-links li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-links li a:hover {
+  color: #ffffff;
+}
+
+/* Sidebar & Komponen */
+.search-input {
+  width: 90%;
+}
 .sidebar {
   width: 200px;
 }
-
 #chatbot-box {
   width: 280px;
 }
-}
 
+/* Responsif Desktop */
 @media (min-width: 1024px) {
+  /* Jangan ubah jadi grid agar tetap scroll horizontal */
   .product-image {
     height: 200px;
   }
-
   .product-title {
     font-size: 1.6em;
   }
-
   .price {
     font-size: 1.4em;
   }
 }
-    </style>
-</head>
-<body>
-<!-- Tombol menu -->
-<div class="menu-btn" onclick="toggleSidebar()" style="position: fixed; top: 15px; left: 15px; z-index: 2000; cursor: pointer;">
-  <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" width="30" alt="Menu">
-</div>
-<div class="sidebar" id="sidebar">
- <img src="img/yoyzz.jpg" alt="Yoyzz Logo" class="logo">
-  <h1 style="margin-top: 0;">Yoyzz Store</h1>
-<button class="btn-in-menu" onclick="window.location.href='https://whatsapp.com/channel/0029VbBfPecFcow5Z80O2n2I'">
-  <i class="fab fa-whatsapp"></i>
-  SALURAN
-</button>
-<button class="tiktok" onclick="window.location.href='https://tiktok.com/@javazcript.id'" style="top: 20px;">
-  <i class="fab fa-tiktok"></i>
-  TIKTOK
-</button>
-<button class="btn-in-menu" onclick="window.location.href='https://wa.me/6285857636560'" style="top: 40px;">
-  <i class="fab fa-whatsapp"></i>
-  WHATSAPP
-</button>
-<button class="btn-in-menu-telegram" onclick="window.location.href='https://t.me/jvzyoga'" style="top: 60px;">
-  <i class="fab fa-telegram"></i>
-  TELEGRAM OWNER
-</button>
-</div>
-<div id="main-content" onclick="closeSidebar()">
-    <div class="header">
-        <img src="img/yoyzz.jpg" alt="Yoyzz Logo" class="logo">
-        <h1>Yoyzz Official</h1>
+</style>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="name">
+                <h1>YOYZZ OFFICIAL STORE</h1>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#search">Search</a></li>
+                <li><a href="#products-section">Produk</a></li>
+                <li><a href="#ayo-lapor">Lapor</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="animate__animated animate__fadeInUp" style="margin-top: 150px; color: white;">Yoyzz Official</h1>
+                    <h2 class="animate__animated animate__fadeInUp animate__delay-1s"></h2>
+                    <p class="animate__animated animate__fadeInUp animate__delay-2s">
+                       Solusi Kebutuhan Produk Digital Anda.
+                    </p>
+                    <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-3s"></div>
+                </div>
+                <div class="hero-image animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="phone-carousel">
+                        <div class="phone-mockup active" id="phone1">
+                            <div class="phone-screen">
+                                <img src="img/website.jpg" alt="Surxrat App Interface 1" class="protected-image">
+                            </div>
+                        </div>
+                        <div class="phone-mockup" id="phone2">
+                            <div class="phone-screen">
+                                <img src="img/website2.jpg" alt="Surxrat App Interface 2" class="protected-image">
+                            </div>
+                        </div>
+                        <div class="phone-mockup" id="phone3">
+                            <div class="phone-screen">
+                                <img src="img/website3.jpg" alt="Surxrat App Interface 3" class="protected-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+
+  <div id="main-content" onclick="closeSidebar()">
+    <section id="search">
+        <div class="header">
+            <img src="../../img/yoyzz.jpg" alt="Yoyzz Logo" class="logo">
+            <h1 class="animate__animated animate__fadeInUp" style="color: white;">Yoyzz Official</h1>
+        </div>
+        <p class="tagline">
+            <span class="typing-container" id="typing-text"></span>
+            <span class="typing-cursor"></span>
+            <button class="skip-btn" id="skip-btn" style="z-index:10000;">Lewati</button>
+        </p>
     </div>
-    <p class="tagline">
-        <span class="typing-container" id="typing-text"></span>
-        <span class="typing-cursor"></span>
-        <button class="skip-btn" id="skip-btn" style="z-index:10000;">Lewati</button>
-    </p>
-    
+  </section>
+
+
     <!-- Search Bar -->
     <div class="search-container">
         <input type="text" class="search-input" id="search-input" placeholder="Cari produk...">
         <i class="fas fa-search search-icon"></i>
     </div>
+
+    <!-- Produk Container -->
+<div id="products-section" class="products-section">
+    <!-- Container untuk produk populer -->
+    <div id="products-popular" class="scroll-container popular-products"></div>
     
-    <div id="products-container">
-    </div>
-    
+    <!-- Container untuk produk biasa -->
+    <div id="products-container" class="scroll-container regular-products"></div>
+</div>
+
+
+    <!-- No Results Message -->
     <div class="no-results" id="no-results">
-<div id="lottie-container" style="width: 300px; height: 300px; transform: translateY(-90px);"></div>
-<p style="margin-top: -140px;">Oops! Produk yang kamu cari tidak tersedia.</p>
-    
+        <div id="lottie-container" style="width: 300px; height: 300px; transform: translateY(-90px);"></div>
+        <p style="margin-top: -140px;">Oops! Produk yang kamu cari tidak tersedia.</p>
+    </div>
+
+    <!-- Modal Konfirmasi -->
     <div class="modal-benefit" id="confirmation-modal">
         <div class="confirmation-modal">
             <button class="close-modal" onclick="closeModal()">&times;</button>
@@ -819,405 +2125,76 @@ h1 {
             </div>
         </div>
     </div>
-</div>
-<div class="modal-overlay" id="benefit-modal">
-    <div class="confirmation-modal">
-        <button class="close-modal" onclick="closeBenefit()">&times;</button>
-        <img src="img/yoyzz.jpg" alt="Yoyzz Logo" class="modal-logo">
-        <h3 class="modal-title">Yoyzz Offc</h3>
-        <p class="modal-message">Benefit</p>
-        <p class="modal-product-name" id="benefit-product" style="text-align: left;"></p>
-        <div class="modal-buttons">
-            <button class="cancel-btn" onclick="closeBenefit()">Close</button>
-        </div>
-    </div>
-</div>
-<div class="information" onclick="openInformation()">
-  <i class="fas fa-info"></i>
-</div>
-<div class="info" id="info">
-  <h2>Information</h2>
-  <p>
-    Produk seperti <strong>Ransomware</strong>,<strong> Phishing Website</strong>,<strong> RAT (Remote Access Trojan)</strong> atau produk berbahaya lainnya yang tersedia di toko ini bukan untuk disalah gunakan.
-  </p>
-  <p>
-    Seluruh materi ditujukan hanya untuk <strong>pembelajaran, penelitian, dan simulasi keamanan siber</strong>. 
-    Dilarang menggunakan produk ini untuk merugikan pihak lain atau melanggar hukum.
-  </p>
-  <p style="font-style: italic; font-size: 13px; color: #888;">
-    Pengguna bertanggung jawab penuh atas penggunaan produk ini.<br>
-    &copy Yoyzz Official
-  </p>
-</div>
-<script src="https://unpkg.com/lottie-web@5.7.4/build/player/lottie.min.js"></script>
-<script>
-  lottie.loadAnimation({
-    container: document.getElementById('lottie-container'),
-    renderer: 'svg',
-    loop: true,
-    autoplay: true,
-    path: 'animation/notfound.json' // Ganti dengan path file JSON kamu
-  });
-</script>
-<script>
-    let isOpen = false;
-    const productsData = [
-        {
-            id: "surxrat-v1.4-s35",
-            image: "img/produk/surxrat_publik.jpg",
-            name: "SURXRAT V1.4 S35",
-            price: 25000,
-            description: "Kontrol Perangkat Android dari jarak jauh dengan fitur lengkap dan keamanan terjamin.",
-            paymentMethods: {
-                dana: "087714144188",
-                gopay: "087714144188",
-                whatsapp: "085857636560"
-            },
-            whatsappLink: "https://wa.me/6285857636560?text=Saya%20ingin%20membeli%20SURXRAT%20V1.4%20S35%20seharga%20Rp%2025.000",
-            isPopular: true,
-            benefits: "✅ Support All Android.<br>✅ Harga terjangkau mulai dari Rp25.000 saja.<br>✅ Mendukung fitur kontrol perangkat seperti file manager dan command.<br>✅Cocok untuk edukasi atau kontrol perangkat anak atau teman.<br>✅ Disertai panduan lengkap tentang cara penggunaan."
-        },
-        {
-          id: "pembuatan-website",
-          image: "img/produk/jasa_pembuatan_website.jpg",
-          name: "Jasa Pembuatan Website",
-          price: 20000,
-          description: "<strong>Jasa Pembuatan Website</strong> adalah layanan profesional untuk membuat situs web sesuai kebutuhan Anda. Mulai dari tampilan, fitur, hingga keamanan, semua dirancang secara custom agar terlihat menarik, responsif, dan mudah digunakan.",
-          paymentMethods: {
-                dana: "085828632336",
-                gopay: "089653927785",
-                whatsapp: "085857636560"
-            },
-          whatsappLink: "https://wa.me/6285857636560?text=Saya%20Ingin%20Menyewa%20Jasa%20Pembuatan%20Website%20Dengan%20Harga%220.000",
-          isPopular: true,
-          isFree: false,
-          benefits: "✅ Desain profesional dan responsif di semua perangkat<br>✅ Proses cepat dan dukungan penuh dari tim Yoyzz<br>✅ Website Responsif & Informatif<br>✅ Mobile friendly dan mudah dikelola<br>✅ Bisa custom sesuai kebutuhan bisnis atau personal"
-        },
-        {
-            id: "ransomware",
-            image: "img/produk/ransomware.jpg",
-            name: "RANSOMWARE",
-            price: 10000,
-            description: "Ransomware LockScreen adalah aplikasi ransomware jenis screen locker jenis malware yang mengunci tampilan layar pengguna sehingga mereka tidak dapat mengakses aplikasi.",
-            paymentMethods: {
-                dana: "085828632336",
-                gopay: "089653927785",
-                whatsapp: "085857636560"
-            },
-            whatsappLink: "https://wa.me/6285857636560?text=Saya%20ingin%20membeli%20RANSOMWARE%20seharga%20Rp%2010.000",
-            isPopular: true,
-            benefits: "✅ Kunci Ponsel Korban<br>✅ Cocok untuk pentester, tim keamanan, dan edukasi profesional<br>✅ Disertai panduan Lengkap tentang cara penggunaan ransomware<br>✅ Bisa request kata kunci<br>✅ Kunci perangkat korban"
-        },
-        {
-          id: "web-spy",
-          image: "img/produk/web_spy.jpg",
-          name: "Web Spy Pro",
-          price: 5000,
-          description: "<strong>Web Spy Pro</strong> adalah alat untuk mengambil elemen-elemen penting dari situs web, seperti HTML, CSS, JavaScript, dan file gambar yang di-import langsung dari halaman.",
-          paymentMethods: {
-                dana: "085828632336",
-                gopay: "089653927785",
-                whatsapp: "085857636560"
-            },
-          whatsappLink: "https://wa.me/6285857636560?text=Saya%20Ingin%20Membeli%20Web%20Spy%20Pro%20Dengan%20Harga%205.000",
-          isPopular: true,
-          isFree: false,
-          benefits: "✅ Ekstrak struktur HTML lengkap dari halaman web<br>✅ Unduh file CSS dan JavaScript eksternal dengan mudah<br>✅ Ambil gambar dan file media yang diimport dari HTML<br>✅ Cocok untuk developer, pelajar, dan peneliti keamanan<br>✅ Interface simpel, tinggal tempel dan download/simpan"
-        },
-{
-  id: "web-spy",
-  image: "img/produk/reseller_web_spy.jpg",
-  name: "Reseller Web Spy Pro",
-  price: 10000,
-  description: "<strong>Reseller Web Spy Pro</strong> adalah program kemitraan resmi dari Yoyzz yang memungkinkan Anda untuk membuat akun Web Spy dan menjualnya kembali ke pengguna lain. Cocok untuk Anda yang ingin memulai bisnis digital dengan produk yang sudah terbukti dibutuhkan.",
-  paymentMethods: {
-    dana: "085828632336",
-    gopay: "089653927785",
-    whatsapp: "085857636560"
-  },
-  whatsappLink: "https://wa.me/6285857636560?text=Saya%20Ingin%20Membeli%20Reseller%20Web%20Spy%20Pro%20Dengan%20Harga%2010.000",
-  isPopular: false,
-  isFree: false,
-  benefits: "✅ Bisa membuat dan membagikan akun Web Spy<br>✅ Bebas atur harga jual dan keuntungan<br>✅ Tanpa stok atau pengiriman fisik<br>✅ Sistem simpel dan mudah dijalankan<br>✅ Dukungan langsung dari tim Yoyzz"
-},
-        {
-          id: "phising-website",
-          image: "img/produk/phising_website.jpg",
-          name: "Phising Website",
-          price: 5000,
-          description: "<strong>Phising Website</strong> adalah metode pencurian data dengan menyamar sebagai situs asli. Saat korban mengklik URL palsu, data seperti lokasi, perangkat, dan info pribadi bisa dikumpulkan tanpa disadari.",
-          paymentMethods: {
-                dana: "085828632336",
-                gopay: "089653927785",
-                whatsapp: "085857636560"
-            },
-          whatsappLink: "https://wa.me/6285857636560?text=Saya%20Ingin%20Membeli%20Phising%20Website%20dengan%20Harga%205.000",
-          isPopular: false,
-          isFree: false,
-          benefits: "✅ Mengumpulkan informasi perangkat korban hanya dengan klik URL<br>✅ Dapat mendeteksi lokasi, kamera, jenis perangkat, user agent, dan baterai<br>✅ Menangkap detail seperti kode pos, IP publik, dan sistem operasi<br>✅ Cocok untuk edukasi keamanan siber dan uji coba simulasi phising<br>✅ Didukung tampilan web yang menarik dan responsif"
-        },
-        {
-          id: "nokos",
-          image: "img/produk/nokos.jpg",
-          name: "Nomor Kosong (Nokos)",
-          price: 5000,
-          description: "<strong>Nokos</strong> adalah Nomor yang sudah kosong dan tidak lagi dimiliki oleh seseorang biasanya nokos digunakan sebagai nomor ke 2 atau nomor bot whatsapp",
-          paymentMethods: {
-                dana: "085828632336",
-                gopay: "089653927785",
-                whatsapp: "085857636560"
-            },
-          whatsappLink: "https://wa.me/6285857636560?text=Saya%20Ingin%20Membeli%20Nokos%20Indo",
-          isPopular: false,
-          isFree: false,
-          benefits: "✅ Dapat digunakan untuk verifikasi akun sementara<br>✅ Cocok dijadikan nomor bot whatsapp<br>✅ Praktis tanpa perlu beli kartu fisik<br>✅ Privasi terjaga, cocok untuk kebutuhan sementara<br>✅ Proses cepat dan langsung siap pakai"
-        },
-        {
-            id: "javascript-obfuscator",
-            image: "img/produk/encrypt_website.jpg",
-            name: "Javascript Obfucator",
-            price: 0,
-            description: "JavaScript Obfuscator adalah alat untuk mengubah kode <strong>Javascript</strong> menjadi bentuk yang sulit dibaca dan dimengerti, tanpa mengubah fungsinya. Ini berguna untuk melindungi kode dari pencurian, pembajakan, dan modifikasi tidak sah.",
-            paymentMethods: {
-                dana: "085828632336",
-                gopay: "089653927785",
-                whatsapp: "085857636560"
-            },
-            whatsappLink: "https://javascript-obfuscator-delta.vercel.app/",
-            isPopular: false,
-            isFree: true,
-            benefits: "✅ Mengacak kode JavaScript agar sulit dibaca dan dimodifikasi<br>✅ Melindungi logika bisnis dari pencurian atau pembajakan<br>✅ Mendukung berbagai teknik obfuscation (string encode, control flow, dll)<br>✅ Cocok untuk developer yang ingin melindungi source code<br>✅ Mudah digunakan dan hasil tetap bisa dijalankan normal"
-        },
-        {
-            id: "rename-tool",
-            image: "img/produk/web_rename.jpg",
-            name: "Rename Tool",
-            price: 0,
-            description: "<strong>Rename Tool</strong> adalah alat online untuk mengganti nama dan identitas dalam skrip bot WhatsApp. Cocok untuk rebranding atau personalisasi tanpa mengubah fungsi utama bot.",
-            paymentMethods: {
-                dana: "085828632336",
-                gopay: "089653927785",
-                whatsapp: "085857636560"
-            },
-            whatsappLink: "https://renamerscript.glitch.me",
-            isPopular: false,
-            isFree: true,
-            benefits: "✅ Ganti nama owner, nama bot, footer, dan teks lainnya dengan cepat & <strong>gratis</strong><br>✅ Mendukung file script.js, config.js, dan sejenisnya<br>✅ Tidak perlu edit manual, cukup input data baru<br>✅ Praktis untuk personalisasi atau rebranding bot WhatsApp<br>✅ Cocok untuk pemula maupun pengembang lanjutan"
-        }
-    ];
-    
-function createProductElement(product) {
-    const productElement = document.createElement('div');
-    productElement.className = 'product';
-    productElement.dataset.name = product.id;
 
-    let badge = '';
-    if (product.isPopular) {
-        badge = '<span class="badge">Popular</span>';
-    }
-
-    const buttonText = product.price === 0 ? 'VISIT SITE' : 'Bayar Sekarang';
-    const buttonIcon = product.price === 0 ? '' : '<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">';
-
-    productElement.innerHTML = `
-        ${badge}
-        <div class="product-content">
-            <img src="${product.image}" alt="${product.name}" class="product-image">
-            <h2 class="product-title">${product.name}</h2><br>
-            <p class="price">${product.price === 0 ? 'Rp 0' : `Rp ${product.price.toLocaleString('id-ID')}`}</p>
-            <p>${product.description}</p>
-
-            <div class="payment-methods">
-                <p>Pembayaran:</p>
-                <ul>
-                    <li>DANA: ${product.paymentMethods.dana}</li>
-                    <li>GOPAY: ${product.paymentMethods.gopay}</li>
-                    <li>WHATSAPP: ${product.paymentMethods.whatsapp}</li>
-                </ul>
+    <!-- Modal Benefit -->
+    <div class="modal-overlay" id="benefit-modal">
+        <div class="confirmation-modal">
+            <button class="close-modal" onclick="closeBenefit()">&times;</button>
+            <img src="img/yoyzz.jpg" alt="Yoyzz Logo" class="modal-logo">
+            <h3 class="modal-title">Yoyzz Offc</h3>
+            <p class="modal-message">Benefit</p>
+            <p class="modal-product-name" id="benefit-product" style="text-align: left;"></p>
+            <div class="modal-buttons">
+                <button class="cancel-btn" onclick="closeBenefit()">Close</button>
             </div>
         </div>
-        <div class="product-footer">
-            <button class="pay-button" onclick="showConfirmationModal('${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.whatsappLink}')">
-                ${buttonIcon} ${buttonText}
-            </button>
-            <button class="pay-button" onclick="openBenefit('${product.name.replace(/'/g, "\\'")}', '${product.benefits.replace(/'/g, "\\'")}')">Benefit</button>
-        </div>
-    `;
+    </div>
 
-    return productElement;
-}
+    <!-- Info Button -->
+    <div class="information" onclick="openInformation()">
+        <i class="fas fa-info"></i>
+    </div>
 
-    function renderProducts() {
-        const productsContainer = document.getElementById('products-container');
-        
-        productsContainer.innerHTML = '';
-        
-        productsData.forEach(product => {
-            const productElement = createProductElement(product);
-            productsContainer.appendChild(productElement);
-        });
-    }
+    <!-- Info Section -->
+    <div class="info" id="info">
+        <h2>Information</h2>
+        <p>
+            Produk seperti <strong>Ransomware</strong>, <strong>Phishing Website</strong>, <strong>RAT (Remote Access Trojan)</strong> atau produk berbahaya lainnya yang tersedia di toko ini bukan untuk disalahgunakan.
+        </p>
+        <p>
+            Seluruh materi ditujukan hanya untuk <strong>pembelajaran, penelitian, dan simulasi keamanan siber</strong>. 
+            Dilarang menggunakan produk ini untuk merugikan pihak lain atau melanggar hukum.
+        </p>
+        <p style="font-style: italic; font-size: 13px; color: #888;">
+            Pengguna bertanggung jawab penuh atas penggunaan produk ini.<br>
+            &copy; Yoyzz Official
+        </p>
+    </div>
 
-    // Benefit Modal Functions
-    function openBenefit(productName, benefits) {
-    document.getElementById('benefit-product').innerHTML = `
-        <div style="text-align: center;"><strong>${productName}</strong></div><br>
-        <div style="text-align: left;">${benefits}</div>
-    `;
-    document.getElementById('benefit-modal').style.display = 'flex';
-}
+<!-- Section: Ayo Lapor -->
+<section id="ayo-lapor" class="report-section">
+  <div class="products-container">
+    <h2>Ayo Lapor!</h2>
+    <p>Kami siap membantu jika kamu mengalami kendala atau memiliki keluhan seputar layanan kami.</p>
+    <form class="report-form">
+      <input type="text" placeholder="Nama Kamu" required>
+      <input type="email" placeholder="Email Aktif" required>
+      <textarea placeholder="Tulis keluhan atau laporan kamu di sini..." required></textarea>
+      <button type="submit">Kirim Laporan</button>
+    </form>
+  </div>
+</section>
 
-    function closeBenefit() {
-        document.getElementById('benefit-modal').style.display = 'none';
-    }
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-logo">Yoyzz Official</div>
+    <p>© 2025 Yoyzz Store. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#search">Search</a></li>
+      <li><a href="#products-container">Produk</a></li>
+      <li><a href="#ayo-lapor">Lapor</a></li>
+    </ul>
+    <p>Global - Version : 4.0.0</p>
+  </div>
+</footer>
 
-    // Existing functions remain the same
-    const taglineText = "Temukan produk digital terbaik disini.";
-    const typingElement = document.getElementById('typing-text');
-    const skipBtn = document.getElementById('skip-btn');
-    let typingSpeed = 50;
-    
-    const sidebar = document.getElementById('sidebar');
-    const mainContent = document.getElementById('main-content');
-    
-    function closeSidebar() {
-        document.getElementById("sidebar").classList.remove("sidebar-open");
-        document.getElementById("main-content").classList.remove("blurred");
-        document.getElementById("overlay").style.display = "none";
+    <!-- Script JS -->
+    <script src="https://unpkg.com/lottie-web@5.7.4/build/player/lottie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="main.js"></script>
 
-        if (window.history.state === "sidebar-open") {
-            history.back();
-        }
-    }
-
-    function openInformation() {
-      const info = document.getElementById("info");
-      
-      if (isOpen) {
-        info.style.display = "none";
-      } else {
-        info.style.display = "block";
-      }
-
-      isOpen = !isOpen;
-    }
-
-    function toggleSidebar() {
-        const isOpen = sidebar.classList.contains('sidebar-open');
-
-        if (!isOpen) {
-            sidebar.classList.add('sidebar-open');
-            mainContent.classList.add('blurred');
-
-            history.pushState({ sidebarOpen: true }, '');
-        } else {
-            sidebar.classList.remove('sidebar-open');
-            mainContent.classList.remove('blurred');
-
-            if (history.state && history.state.sidebarOpen) {
-                history.back();
-            }
-        }
-    }
-
-    window.addEventListener('popstate', function (event) {
-        if (sidebar.classList.contains('sidebar-open')) {
-            sidebar.classList.remove('sidebar-open');
-            mainContent.classList.remove('blurred');
-        }
-    });
-    
-    function typeWriter(text, i, fnCallback) {
-        if (i < text.length) {
-            typingElement.innerHTML = text.substring(0, i+1);
-            setTimeout(function() { typeWriter(text, i + 1, fnCallback) }, typingSpeed);
-        } else if (typeof fnCallback == 'function') {
-            setTimeout(fnCallback, 1000);
-        }
-    }
-    
-    function startTyping() {
-        typeWriter(taglineText, 0, function() {
-            skipBtn.style.display = 'none';
-        });
-    }
-    
-    skipBtn.addEventListener('click', function() {
-        typingSpeed = 0;
-        typingElement.innerHTML = taglineText;
-        skipBtn.style.display = 'none';
-    });
-    
-    const searchInput = document.getElementById('search-input');
-    const noResults = document.getElementById('no-results');
-    
-    function handleSearch() {
-        const searchTerm = searchInput.value.toLowerCase().trim();
-        let hasResults = false;
-        const products = document.querySelectorAll('.product');
-        
-        products.forEach(product => {
-            const productName = product.getAttribute('data-name').toLowerCase();
-            const productTitle = product.querySelector('.product-title').textContent.toLowerCase();
-            const productDesc = product.querySelector('p:not(.price)')?.textContent.toLowerCase() || '';
-            
-            if (productName.includes(searchTerm) || 
-                productTitle.includes(searchTerm) || 
-                productDesc.includes(searchTerm)) {
-                product.style.display = 'block';
-                hasResults = true;
-            } else {
-                product.style.display = 'none';
-            }
-        });
-        
-        noResults.style.display = hasResults ? 'none' : 'block';
-    }
-    
-    searchInput.addEventListener('input', handleSearch);
-
-    document.querySelector('.search-icon').addEventListener('click', function() {
-        searchInput.value = '';
-        handleSearch();
-    });
-    
-    let currentPaymentUrl = '';
-    
-    function showConfirmationModal(productName, price, paymentUrl) {
-        currentPaymentUrl = paymentUrl;
-        const modal = document.getElementById('confirmation-modal');
-        document.getElementById('modal-product-name').textContent = productName;
-        document.getElementById('modal-price').textContent = `Rp ${price.toLocaleString('id-ID')}`;
-        modal.style.display = 'flex';
-        
-        const confirmBtn = document.getElementById('confirm-payment-btn');
-        confirmBtn.onclick = function() {
-            window.location.href = currentPaymentUrl;
-        };
-    }
-    
-    function closeModal() {
-        document.getElementById('confirmation-modal').style.display = 'none';
-        const info = document.getElementById("info");
-        info.style.display = "none";
-    }
-    
-    window.addEventListener('click', function(event) {
-        const modal = document.getElementById('confirmation-modal');
-        if (event.target === modal) {
-            closeModal();
-        }
-        
-        const benefitModal = document.getElementById('benefit-modal');
-        if (event.target === benefitModal) {
-            closeBenefit();
-        }
-    });
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        renderProducts();
-        startTyping();
-    });
-</script>
 </body>
 </html>

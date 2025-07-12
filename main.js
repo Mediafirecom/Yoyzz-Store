@@ -1,5 +1,6 @@
 const popularTitle = document.createElement('h2');
 const regularTitle = document.createElement('h2');
+const freeTitle = document.createElement('h2');
 const header = document.querySelector('header');
 const backToTop = document.querySelector('.back-to-top');
     
@@ -547,21 +548,20 @@ function renderProducts() {
 
   // Buat judul jika belum ada
   if (!document.querySelector('.section-title-popular')) {
-    const popularTitle = document.createElement('h2');
     popularTitle.className = 'section-title section-title-popular';
     popularTitle.textContent = 'Produk Populer 🔥';
     popularContainer.parentNode.insertBefore(popularTitle, popularContainer);
   }
 
   if (!document.querySelector('.section-title-free')) {
-    const freeTitle = document.createElement('h2');
+    
     freeTitle.className = 'section-title section-title-free';
     freeTitle.textContent = 'Produk Gratis';
     freeContainer.parentNode.insertBefore(freeTitle, freeContainer);
   }
 
   if (!document.querySelector('.section-title-regular')) {
-    const regularTitle = document.createElement('h2');
+    
     regularTitle.className = 'section-title section-title-regular';
     regularTitle.textContent = 'Produk Lainnya';
     regularContainer.parentNode.insertBefore(regularTitle, regularContainer);
@@ -693,7 +693,7 @@ function renderProducts() {
                 product.style.display = 'none';
                 popularTitle.style.display = 'none';
                 regularTitle.style.display = 'none';
-                
+                freeTitle.style.display = 'none';
             }
         });
         

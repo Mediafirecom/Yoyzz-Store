@@ -1405,7 +1405,7 @@ h1 {
 
 .search-icon {
     position: absolute;
-    right: 20px;
+    right: 40px;
     top: 50%;
     transform: translateY(-50%);
     color: #7f8c8d;
@@ -1753,13 +1753,15 @@ h1 {
         
 .no-results {
   text-align: center;
-  padding: 30px;
+  padding: 30px 15px 15px 15px; /* atas: 30px → ganti jika perlu */
   color: #7f8c8d;
   font-style: italic;
   display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
+  margin-top: 0; /* ✅ jarak dari atas jadi 0 */
 }
 
 #lottie-container {
@@ -1828,7 +1830,34 @@ h1 {
   position: relative;
 }
 
+.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* ✅ Tengah horizontal dan vertikal */
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 9999;
+  text-align: center;
+  width: 280px;
+  border-left: 6px solid;
+  animation: fadeInOut 4s ease forwards; /* Opsional: animasi */
+}
 
+#success {
+  border-color: #2ecc71;
+}
+#failed {
+  border-color: #e74c3c;
+}
+
+.lottie {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+}
 
 /* Konten Produk */
 .product-content {
@@ -2076,7 +2105,7 @@ h1 {
   <div id="main-content" onclick="closeSidebar()">
     <section id="search">
         <div class="header">
-            <img src="../../img/yoyzz.jpg" alt="Yoyzz Logo" class="logo">
+            <img src="img/yoyzz.jpg" alt="Yoyzz Logo" class="logo">
             <h1 class="animate__animated animate__fadeInUp" style="color: white;">Yoyzz Official</h1>
         </div>
         <p class="tagline">
@@ -2096,11 +2125,14 @@ h1 {
 
     <!-- Produk Container -->
 <div id="products-section" class="products-section">
-    <!-- Container untuk produk populer -->
-    <div id="products-popular" class="scroll-container popular-products"></div>
-    
-    <!-- Container untuk produk biasa -->
-    <div id="products-container" class="scroll-container regular-products"></div>
+  <!-- Container untuk produk populer -->
+  <div id="products-popular" class="scroll-container popular-products"></div>
+  
+  <!-- Container untuk produk biasa -->
+  <div id="products-regular" class="scroll-container regular-products"></div>
+  
+  <!-- Container untuk produk gratis -->
+  <div id="products-free" class="scroll-container free-products"></div>
 </div>
 
 
@@ -2139,6 +2171,18 @@ h1 {
             </div>
         </div>
     </div>
+
+<!-- SUCCESS -->
+<div id="success" class="notification" style="display:none;">
+  <div id="success-lottie" class="lottie"></div>
+  <p id="success-text"></p>
+</div>
+
+<!-- FAILED -->
+<div id="failed" class="notification" style="display:none;">
+  <div id="failed-lottie" class="lottie"></div>
+  <p id="failed-text"></p>
+</div>
 
     <!-- Info Button -->
     <div class="information" onclick="openInformation()">
@@ -2186,7 +2230,7 @@ h1 {
       <li><a href="#products-container">Produk</a></li>
       <li><a href="#ayo-lapor">Lapor</a></li>
     </ul>
-    <p>Global - Version : 4.0.0</p>
+    <p>Global - Version : 4.5.0 (Grape)</p>
   </div>
 </footer>
 

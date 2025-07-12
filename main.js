@@ -1,3 +1,8 @@
+const popularTitle = document.createElement('h2');
+const regularTitle = document.createElement('h2');
+const header = document.querySelector('header');
+const backToTop = document.querySelector('.back-to-top');
+    
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize AOS animation library
     if (typeof AOS !== 'undefined') {
@@ -10,8 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Header scroll effect
-    const header = document.querySelector('header');
-    const backToTop = document.querySelector('.back-to-top');
     
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
@@ -293,6 +296,58 @@ lottie.loadAnimation({
     path: 'animation/notfound.json' // Ganti dengan path file JSON kamu
   });
   
+  function showSuccess(text) {
+  const container = document.getElementById('success');
+  const lottieContainer = document.getElementById('success-lottie');
+  const textContainer = document.getElementById('success-text');
+
+  textContainer.textContent = text;
+  container.style.display = 'block';
+  container.style.animation = 'animate__animated animate__fadeInUp';
+  // Hapus animasi lama jika ada
+  lottieContainer.innerHTML = '';
+
+  // Tampilkan animasi sukses
+  lottie.loadAnimation({
+    container: lottieContainer,
+    renderer: 'svg',
+    loop: false,
+    autoplay: true,
+    path: 'animation/success.json' // animasi centang sukses
+  });
+
+  setTimeout(() => {
+    container.style.display = 'none';
+  }, 4000);
+}
+
+function showFailed(text) {
+  const container = document.getElementById('failed');
+  const lottieContainer = document.getElementById('failed-lottie');
+  const textContainer = document.getElementById('failed-text');
+
+  textContainer.textContent = text;
+  container.style.display = 'block';
+  container.style.animation = 'animate__animated animate__fadeInUp';
+
+  // Hapus animasi lama jika ada
+  lottieContainer.innerHTML = '';
+
+  // Tampilkan animasi gagal
+  lottie.loadAnimation({
+    container: lottieContainer,
+    renderer: 'svg',
+    loop: false,
+    autoplay: true,
+    path: 'animation/error.json' // animasi silang merah
+  });
+
+  setTimeout(() => {
+    container.style.display = 'none';
+  }, 4000);
+}
+  
+  
     let isOpen = false;
     const productsData = [
         {
@@ -481,37 +536,49 @@ function createProductElement(product) {
 }
 
 function renderProducts() {
-    const popularContainer = document.getElementById('products-popular');
-    const regularContainer = document.getElementById('products-container');
-    
-    // Kosongkan container
-    popularContainer.innerHTML = '';
-    regularContainer.innerHTML = '';
-    
-    // Tambahkan judul section jika belum ada
-    if (!document.querySelector('.section-title-popular')) {
-        const popularTitle = document.createElement('h2');
-        popularTitle.className = 'section-title section-title-popular';
-        popularTitle.textContent = 'Produk Populer 🔥';
-        popularContainer.parentNode.insertBefore(popularTitle, popularContainer);
+  const popularContainer = document.getElementById('products-popular');
+  const freeContainer = document.getElementById('products-free');
+  const regularContainer = document.getElementById('products-regular');
+
+  // Kosongkan semua container
+  popularContainer.innerHTML = '';
+  freeContainer.innerHTML = '';
+  regularContainer.innerHTML = '';
+
+  // Buat judul jika belum ada
+  if (!document.querySelector('.section-title-popular')) {
+    const popularTitle = document.createElement('h2');
+    popularTitle.className = 'section-title section-title-popular';
+    popularTitle.textContent = 'Produk Populer 🔥';
+    popularContainer.parentNode.insertBefore(popularTitle, popularContainer);
+  }
+
+  if (!document.querySelector('.section-title-free')) {
+    const freeTitle = document.createElement('h2');
+    freeTitle.className = 'section-title section-title-free';
+    freeTitle.textContent = 'Produk Gratis';
+    freeContainer.parentNode.insertBefore(freeTitle, freeContainer);
+  }
+
+  if (!document.querySelector('.section-title-regular')) {
+    const regularTitle = document.createElement('h2');
+    regularTitle.className = 'section-title section-title-regular';
+    regularTitle.textContent = 'Produk Lainnya';
+    regularContainer.parentNode.insertBefore(regularTitle, regularContainer);
+  }
+
+  // Render produk ke container sesuai kategori
+  productsData.forEach(product => {
+    const productElement = createProductElement(product);
+
+    if (product.isPopular) {
+      popularContainer.appendChild(productElement);
+    } else if (product.isFree || product.price === 0) {
+      freeContainer.appendChild(productElement);
+    } else {
+      regularContainer.appendChild(productElement);
     }
-    
-    if (!document.querySelector('.section-title-regular')) {
-        const regularTitle = document.createElement('h2');
-        regularTitle.className = 'section-title section-title-regular';
-        regularTitle.textContent = 'Produk Lainnya';
-        regularContainer.parentNode.insertBefore(regularTitle, regularContainer);
-    }
-    
-    // Pisahkan produk populer dan biasa
-    productsData.forEach(product => {
-        const productElement = createProductElement(product);
-        if (product.isPopular) {
-            popularContainer.appendChild(productElement);
-        } else {
-            regularContainer.appendChild(productElement);
-        }
-    });
+  });
 }
 
     // Benefit Modal Functions
@@ -624,6 +691,9 @@ function renderProducts() {
                 hasResults = true;
             } else {
                 product.style.display = 'none';
+                popularTitle.style.display = 'none';
+                regularTitle.style.display = 'none';
+                
             }
         });
         
@@ -678,9 +748,31 @@ document.querySelector('.report-form').addEventListener('submit', function(e) {
   const message = this.querySelector('textarea').value.trim();
 
   if (!name || !email || !message) {
-    alert('Mohon isi semua kolom sebelum mengirim.');
+    showFailed('Mohon isi semua kolom sebelum mengirim.');
     return;
   }
+
+  // 🔒 Validasi isi laporan anti deface/script
+  const lowerMsg = message.toLowerCase();
+  const blacklist = ['<script', '</script', '<iframe', '</iframe', 'onerror', 'onload', 'javascript:', '<img', '<svg', 'style='];
+
+  for (const bad of blacklist) {
+    if (lowerMsg.includes(bad)) {
+      showFailed('Hayoo mau ngapain😹');
+      return;
+    }
+  }
+
+  // 🧼 Escape karakter berbahaya
+  const safeText = (text) =>
+    text.replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+
+  const safeName = safeText(name);
+  const safeEmail = safeText(email);
+  const safeMessage = safeText(message);
 
   const telegramToken = '7138157401:AAF9G6HmVk6iiTweXrBm1AS1jqZ7pdyLoDg';
   const chatId = '7822932083';
@@ -688,18 +780,14 @@ document.querySelector('.report-form').addEventListener('submit', function(e) {
   const text = `
 📢 *LAPORAN MASUK!*
 
-👤 *Nama:* ${name}
-📧 *Email:* ${email}
-📝 *Pesan:* ${message}
-  `.trim();
+👤 *Nama:* ${safeName}
+📧 *Email:* ${safeEmail}
+📝 *Pesan:* ${safeMessage}
+`.trim();
 
-  const url = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
-
-  fetch(url, {
+  fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       chat_id: chatId,
       text: text,
@@ -709,15 +797,15 @@ document.querySelector('.report-form').addEventListener('submit', function(e) {
   .then(res => res.json())
   .then(data => {
     if (data.ok) {
-      alert('✅ Laporan berhasil dikirim!');
-      document.querySelector('.report-form').reset();
+      showSuccess('✅ Laporan berhasil dikirim!');
+      this.reset();
     } else {
-      alert('❌ Gagal mengirim laporan. Coba lagi.');
+      showFailed('❌ Gagal mengirim laporan. Coba lagi.');
       console.error(data);
     }
   })
   .catch(err => {
-    alert('❌ Terjadi kesalahan saat mengirim.');
+    showFailed('❌ Terjadi kesalahan saat mengirim.');
     console.error(err);
   });
 });

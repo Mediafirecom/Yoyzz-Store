@@ -370,6 +370,7 @@ header.scrolled .nav-menu li a {
     opacity: 0;
     visibility: hidden;
     transition: opacity 1s ease, transform 1s ease;
+    margin-top: 50px;
 }
 
 .phone-mockup.active {
@@ -1263,6 +1264,10 @@ h1 {
     z-index: 1;
 }
 
+.heading {
+    transform: translateY(100px);
+}
+
 
 .chatbot {
   position: fixed;
@@ -2138,17 +2143,17 @@ h1 {
                     <div class="phone-carousel">
                         <div class="phone-mockup active" id="phone1">
                             <div class="phone-screen">
-                                <img src="img/website.jpg" alt="Surxrat App Interface 1" class="protected-image">
+                                <img src="img/website.jpg" alt="Yoyzz Store Interface 1" class="protected-image">
                             </div>
                         </div>
                         <div class="phone-mockup" id="phone2">
                             <div class="phone-screen">
-                                <img src="img/website2.jpg" alt="Surxrat App Interface 2" class="protected-image">
+                                <img src="img/website2.jpg" alt="Yoyzz Store Interface 2" class="protected-image">
                             </div>
                         </div>
                         <div class="phone-mockup" id="phone3">
                             <div class="phone-screen">
-                                <img src="img/website3.jpg" alt="Surxrat App Interface 3" class="protected-image">
+                                <img src="img/website3.jpg" alt="Yoyzz Store Interface 3" class="protected-image">
                             </div>
                         </div>
                     </div>
@@ -2160,10 +2165,10 @@ h1 {
     <!-- Main Content -->
 
   <div id="main-content" onclick="closeSidebar()">
-    <section id="search">
+  <div class="heading">
         <div class="header">
             <img src="img/yoyzz.jpg" alt="Yoyzz Logo" class="logo">
-            <h1 class="animate__animated animate__fadeInUp" style="color: white;">Yoyzz Official</h1>
+            <h1 class="animate__animated animate__fadeInUp" style="color: black;">Yoyzz Official</h1>
         </div>
         <p class="tagline">
             <span class="typing-container" id="typing-text"></span>
@@ -2171,14 +2176,16 @@ h1 {
             <button class="skip-btn" id="skip-btn" style="z-index:10000;">Lewati</button>
         </p>
     </div>
-  </section>
+    </div>
 
 
     <!-- Search Bar -->
+    <section id="search"></section>
     <div class="search-container">
         <input type="text" class="search-input" id="search-input" placeholder="Cari produk...">
         <i class="fas fa-search search-icon"></i>
     </div>
+  </section>
 
     <!-- Produk Container -->
 <div id="products-section" class="products-section">
@@ -2287,7 +2294,7 @@ h1 {
       <li><a href="#products-container">Produk</a></li>
       <li><a href="#ayo-lapor">Lapor</a></li>
     </ul>
-    <p>Global - Version : 4.5.0 (Grape)</p>
+    <p>Global - Version : 5.0.0 (Lemon)</p>
   </div>
 </footer>
 

@@ -740,75 +740,7 @@ function renderProducts() {
         }
     });
     
-document.querySelector('.report-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const name = this.querySelector('input[placeholder="Nama Kamu"]').value.trim();
-  const email = this.querySelector('input[placeholder="Email Aktif"]').value.trim();
-  const message = this.querySelector('textarea').value.trim();
-
-  if (!name || !email || !message) {
-    showFailed('Mohon isi semua kolom sebelum mengirim.');
-    return;
-  }
-
-  // 🔒 Validasi isi laporan anti deface/script
-  const lowerMsg = message.toLowerCase();
-  const blacklist = ['<script', '</script', '<iframe', '</iframe', 'onerror', 'onload', 'javascript:', '<img', '<svg', 'style='];
-
-  for (const bad of blacklist) {
-    if (lowerMsg.includes(bad)) {
-      showFailed('Hayoo mau ngapain😹');
-      return;
-    }
-  }
-
-  // 🧼 Escape karakter berbahaya
-  const safeText = (text) =>
-    text.replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-
-  const safeName = safeText(name);
-  const safeEmail = safeText(email);
-  const safeMessage = safeText(message);
-
-  const telegramToken = '7138157401:AAF9G6HmVk6iiTweXrBm1AS1jqZ7pdyLoDg';
-  const chatId = '7822932083';
-
-  const text = `
-📢 *LAPORAN MASUK!*
-
-👤 *Nama:* ${safeName}
-📧 *Email:* ${safeEmail}
-📝 *Pesan:* ${safeMessage}
-`.trim();
-
-  fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      chat_id: chatId,
-      text: text,
-      parse_mode: 'Markdown'
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.ok) {
-      showSuccess('✅ Laporan berhasil dikirim!');
-      this.reset();
-    } else {
-      showFailed('❌ Gagal mengirim laporan. Coba lagi.');
-      console.error(data);
-    }
-  })
-  .catch(err => {
-    showFailed('❌ Terjadi kesalahan saat mengirim.');
-    console.error(err);
-  });
-});
+function _0x30bd(){const _0x3071b4=['1876210NvtSFc','</script','javascript:','reset','trim','</iframe','catch','preventDefault','.report-form','&#39;','6psJhRi','querySelector','<iframe','686805mqGGGa','<script','1190572DjKLkZ','input[placeholder=\x22Email\x20Aktif\x22]','Mohon\x20isi\x20semua\x20kolom\x20sebelum\x20mengirim.','&lt;','❌\x20Terjadi\x20kesalahan\x20saat\x20mengirim.','<svg','value','input[placeholder=\x22Nama\x20Kamu\x22]','then','7822932083','✅\x20Laporan\x20berhasil\x20dikirim!','stringify','\x0a📝\x20*Pesan:*\x20','760986tFEHbD','7485016QJwNNW','❌\x20Gagal\x20mengirim\x20laporan.\x20Coba\x20lagi.','replace','\x0a📧\x20*Email:*\x20','includes','Markdown','<img','https://api.telegram.org/bot','&quot;','9042032QzRobA','Hayoo\x20mau\x20ngapain😹','style=','POST','error','onerror','textarea','1464462jddcgm','/sendMessage','addEventListener'];_0x30bd=function(){return _0x3071b4;};return _0x30bd();}const _0x16d2e6=_0x4eb9;function _0x4eb9(_0x305541,_0x18a0bb){const _0x30bd78=_0x30bd();return _0x4eb9=function(_0x4eb9f9,_0x5a6e5b){_0x4eb9f9=_0x4eb9f9-0x79;let _0x14c375=_0x30bd78[_0x4eb9f9];return _0x14c375;},_0x4eb9(_0x305541,_0x18a0bb);}(function(_0x303cc7,_0x4b9125){const _0xbd7458=_0x4eb9,_0x2174f0=_0x303cc7();while(!![]){try{const _0x32adeb=parseInt(_0xbd7458(0x9f))/0x1+-parseInt(_0xbd7458(0x83))/0x2+parseInt(_0xbd7458(0x8d))/0x3*(parseInt(_0xbd7458(0x92))/0x4)+-parseInt(_0xbd7458(0x90))/0x5+parseInt(_0xbd7458(0x80))/0x6+-parseInt(_0xbd7458(0xa0))/0x7+parseInt(_0xbd7458(0x79))/0x8;if(_0x32adeb===_0x4b9125)break;else _0x2174f0['push'](_0x2174f0['shift']());}catch(_0x40098b){_0x2174f0['push'](_0x2174f0['shift']());}}}(_0x30bd,0x8f079),document['querySelector'](_0x16d2e6(0x8b))[_0x16d2e6(0x82)]('submit',function(_0x3f7674){const _0x244e68=_0x16d2e6;_0x3f7674[_0x244e68(0x8a)]();const _0xf7afe5=this[_0x244e68(0x8e)](_0x244e68(0x99))[_0x244e68(0x98)][_0x244e68(0x87)](),_0xd3ff86=this[_0x244e68(0x8e)](_0x244e68(0x93))['value']['trim'](),_0x390b4a=this['querySelector'](_0x244e68(0x7f))[_0x244e68(0x98)]['trim']();if(!_0xf7afe5||!_0xd3ff86||!_0x390b4a){showFailed(_0x244e68(0x94));return;}const _0x3e07df=_0x390b4a['toLowerCase'](),_0x39f7bf=[_0x244e68(0x91),_0x244e68(0x84),_0x244e68(0x8f),_0x244e68(0x88),_0x244e68(0x7e),'onload',_0x244e68(0x85),_0x244e68(0xa6),_0x244e68(0x97),_0x244e68(0x7b)];for(const _0x9eb6ea of _0x39f7bf){if(_0x3e07df[_0x244e68(0xa4)](_0x9eb6ea)){showFailed(_0x244e68(0x7a));return;}}const _0x97ed8c=_0x4e398e=>_0x4e398e[_0x244e68(0xa2)](/</g,_0x244e68(0x95))[_0x244e68(0xa2)](/>/g,'&gt;')[_0x244e68(0xa2)](/"/g,_0x244e68(0xa8))[_0x244e68(0xa2)](/'/g,_0x244e68(0x8c)),_0x5c6473=_0x97ed8c(_0xf7afe5),_0x1d8bf6=_0x97ed8c(_0xd3ff86),_0xab7d9f=_0x97ed8c(_0x390b4a),_0xeee331='7138157401:AAF9G6HmVk6iiTweXrBm1AS1jqZ7pdyLoDg',_0x312ea1=_0x244e68(0x9b),_0x48ad10=('\x0a📢\x20*LAPORAN\x20MASUK!*\x0a\x0a👤\x20*Nama:*\x20'+_0x5c6473+_0x244e68(0xa3)+_0x1d8bf6+_0x244e68(0x9e)+_0xab7d9f+'\x0a')['trim']();fetch(_0x244e68(0xa7)+_0xeee331+_0x244e68(0x81),{'method':_0x244e68(0x7c),'headers':{'Content-Type':'application/json'},'body':JSON[_0x244e68(0x9d)]({'chat_id':_0x312ea1,'text':_0x48ad10,'parse_mode':_0x244e68(0xa5)})})['then'](_0x5ce86c=>_0x5ce86c['json']())[_0x244e68(0x9a)](_0x8133c7=>{const _0x2abc31=_0x244e68;_0x8133c7['ok']?(showSuccess(_0x2abc31(0x9c)),this[_0x2abc31(0x86)]()):(showFailed(_0x2abc31(0xa1)),console[_0x2abc31(0x7d)](_0x8133c7));})[_0x244e68(0x89)](_0x17076d=>{const _0x1447b6=_0x244e68;showFailed(_0x1447b6(0x96)),console['error'](_0x17076d);});}));
     
     document.addEventListener('DOMContentLoaded', function() {
         renderProducts();
